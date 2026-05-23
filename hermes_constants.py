@@ -41,9 +41,9 @@ def get_hermes_home_override() -> str | None:
 
 
 def get_hermes_home() -> Path:
-    """Return the Hermes home directory (default: ~/.hermes).
+    """Return the Hermes home directory (default: ~/.meridian).
 
-    Reads HERMES_HOME env var, falls back to ~/.hermes.
+    Reads HERMES_HOME env var, falls back to ~/.meridian.
     This is the single source of truth — all other copies should import this.
 
     When ``HERMES_HOME`` is unset but an ``active_profile`` file indicates
@@ -98,7 +98,7 @@ def get_hermes_home() -> Path:
             except Exception:
                 pass
 
-    return Path.home() / ".hermes"
+    return Path.home() / ".meridian"
 
 
 def get_default_hermes_root() -> Path:
