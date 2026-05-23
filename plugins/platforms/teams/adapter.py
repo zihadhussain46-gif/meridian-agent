@@ -675,7 +675,7 @@ class TeamsAdapter(BasePlatformAdapter):
                 client_secret=self._client_secret,
                 tenant_id=self._tenant_id,
                 http_server_adapter=_AiohttpBridgeAdapter(aiohttp_app),
-                client=ClientOptions(headers={"User-Agent": "Hermes"}),
+                client=ClientOptions(headers={"User-Agent": "Meridian"}),
             )
 
             # Register message handler before initialize()

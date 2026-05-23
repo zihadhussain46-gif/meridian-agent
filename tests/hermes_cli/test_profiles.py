@@ -114,7 +114,7 @@ class TestValidateProfileName:
         with pytest.raises(ValueError):
             validate_profile_name("")
 
-    @pytest.mark.parametrize("name", ["hermes", "test", "tmp", "root", "sudo"])
+    @pytest.mark.parametrize("name", ["meridian", "test", "tmp", "root", "sudo"])
     def test_reserved_names_rejected(self, name):
         """Reserved names collide with the Hermes install itself or with
         common system binaries — reject them at validate time so
@@ -636,7 +636,7 @@ class TestRenameProfile:
                     "saveMessages": True,
                     "peerName": "user-peer",
                     "aiPeer": "ssi_health",
-                    "workspace": "hermes",
+                    "workspace": "meridian",
                     "enabled": True,
                 }
             }
@@ -656,7 +656,7 @@ class TestRenameProfile:
         honcho_path = tmp_path / ".hermes" / "honcho.json"
         honcho_path.write_text(json.dumps({
             "hosts": {
-                "hermes.ssi_health": {"workspace": "hermes", "enabled": True}
+                "hermes.ssi_health": {"workspace": "meridian", "enabled": True}
             }
         }))
 
@@ -666,7 +666,7 @@ class TestRenameProfile:
         cfg = json.loads(honcho_path.read_text())
         assert "hermes.ssi_health" not in cfg["hosts"]
         assert cfg["hosts"]["hermes.heimdall"]["aiPeer"] == "ssi_health"
-        assert cfg["hosts"]["hermes.heimdall"]["workspace"] == "hermes"
+        assert cfg["hosts"]["hermes.heimdall"]["workspace"] == "meridian"
 
     def test_does_not_overwrite_existing_honcho_host_on_rename(self, profile_env):
         tmp_path = profile_env

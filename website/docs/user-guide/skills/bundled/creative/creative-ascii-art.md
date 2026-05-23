@@ -17,7 +17,7 @@ ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.
 | Source | Bundled (installed by default) |
 | Path | `skills/creative/ascii-art` |
 | Version | `4.0.0` |
-| Author | 0xbyt4, Hermes Agent |
+| Author | 0xbyt4, Meridian Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `ASCII`, `Art`, `Banners`, `Creative`, `Unicode`, `Text-Art`, `pyfiglet`, `figlet`, `cowsay`, `boxes` |
@@ -172,7 +172,7 @@ boxes -l                                       # List all 70+ designs
 ### Combine with pyfiglet or asciified
 
 ```bash
-python3 -m pyfiglet "HERMES" -f slant | boxes -d stone
+python3 -m pyfiglet "MERIDIAN" -f slant | boxes -d stone
 # Or without pyfiglet installed:
 curl -s "https://asciified.thelicato.io/api/v2/ascii?text=HERMES&font=Slant" | boxes -d stone
 ```

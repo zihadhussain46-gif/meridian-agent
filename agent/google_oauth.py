@@ -885,7 +885,7 @@ def start_oauth_flow(
         "access_type": "offline",
         "prompt": "consent",
     }
-    auth_url = AUTH_ENDPOINT + "?" + urllib.parse.urlencode(params) + "#hermes"
+    auth_url = AUTH_ENDPOINT + "?" + urllib.parse.urlencode(params) + "# meridian"
 
     server_thread = threading.Thread(target=server.serve_forever, daemon=True)
     server_thread.start()
@@ -962,7 +962,7 @@ def _paste_mode_login(
         "access_type": "offline",
         "prompt": "consent",
     }
-    auth_url = AUTH_ENDPOINT + "?" + urllib.parse.urlencode(params) + "#hermes"
+    auth_url = AUTH_ENDPOINT + "?" + urllib.parse.urlencode(params) + "# meridian"
 
     print()
     print("Open this URL in a browser on any device:")

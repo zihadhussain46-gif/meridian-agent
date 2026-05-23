@@ -6,7 +6,7 @@ description: "External memory provider plugins — Honcho, OpenViking, Mem0, Hin
 
 # Memory Providers
 
-Hermes Agent ships with 8 external memory provider plugins that give the agent persistent, cross-session knowledge beyond the built-in MEMORY.md and USER.md. Only **one** external provider can be active at a time — the built-in memory is always active alongside it.
+Meridian Agent ships with 8 external memory provider plugins that give the agent persistent, cross-session knowledge beyond the built-in MEMORY.md and USER.md. Only **one** external provider can be active at a time — the built-in memory is always active alongside it.
 
 ## Quick Start
 
@@ -105,11 +105,11 @@ The legacy `hermes honcho setup` command still works (it now redirects to `herme
 {
   "apiKey": "your-key-from-app.honcho.dev",
   "hosts": {
-    "hermes": {
+    "meridian": {
       "enabled": true,
-      "aiPeer": "hermes",
+      "aiPeer": "meridian",
       "peerName": "your-name",
-      "workspace": "hermes"
+      "workspace": "meridian"
     }
   }
 }
@@ -124,11 +124,11 @@ The legacy `hermes honcho setup` command still works (it now redirects to `herme
 {
   "baseUrl": "http://localhost:8000",
   "hosts": {
-    "hermes": {
+    "meridian": {
       "enabled": true,
-      "aiPeer": "hermes",
+      "aiPeer": "meridian",
       "peerName": "your-name",
-      "workspace": "hermes"
+      "workspace": "meridian"
     }
   }
 }
@@ -205,13 +205,13 @@ See the [Honcho page](./honcho.md#observation-directional-vs-unified) for the fu
 ```json
 {
   "apiKey": "your-key",
-  "workspace": "hermes",
+  "workspace": "meridian",
   "peerName": "eri",
   "hosts": {
-    "hermes": {
+    "meridian": {
       "enabled": true,
-      "aiPeer": "hermes",
-      "workspace": "hermes",
+      "aiPeer": "meridian",
+      "workspace": "meridian",
       "peerName": "eri",
       "recallMode": "hybrid",
       "writeFrequency": "async",
@@ -232,7 +232,7 @@ See the [Honcho page](./honcho.md#observation-directional-vs-unified) for the fu
     "hermes.coder": {
       "enabled": true,
       "aiPeer": "coder",
-      "workspace": "hermes",
+      "workspace": "meridian",
       "peerName": "eri",
       "recallMode": "tools",
       "observation": {
@@ -243,7 +243,7 @@ See the [Honcho page](./honcho.md#observation-directional-vs-unified) for the fu
     "hermes.writer": {
       "enabled": true,
       "aiPeer": "writer",
-      "workspace": "hermes",
+      "workspace": "meridian",
       "peerName": "eri"
     }
   },
@@ -359,7 +359,7 @@ The setup wizard installs dependencies automatically and only installs what's ne
 | `auto_retain` | `true` | Automatically retain conversation turns |
 | `auto_recall` | `true` | Automatically recall memories before each turn |
 | `retain_async` | `true` | Process retain asynchronously on the server |
-| `retain_context` | `conversation between Hermes Agent and the User` | Context label for retained memories |
+| `retain_context` | `conversation between Meridian Agent and the User` | Context label for retained memories |
 | `retain_tags` | — | Default tags applied to retained memories; merged with per-call tool tags |
 | `retain_source` | — | Optional `metadata.source` attached to retained memories |
 | `retain_user_prefix` | `User` | Label used before user turns in auto-retained transcripts |
@@ -509,7 +509,7 @@ echo 'SUPERMEMORY_API_KEY=***' >> ~/.hermes/.env
 
 ```json
 {
-  "container_tag": "hermes",
+  "container_tag": "meridian",
   "enable_custom_container_tags": true,
   "custom_containers": ["project-alpha", "shared-knowledge"],
   "custom_container_instructions": "Use project-alpha for coding context."

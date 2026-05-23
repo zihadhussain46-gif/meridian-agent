@@ -558,8 +558,8 @@ class CopilotACPClient:
                         }
                     },
                     "clientInfo": {
-                        "name": "hermes-agent",
-                        "title": "Hermes Agent",
+                        "name": "meridian-agent",
+                        "title": "Meridian Agent",
                         "version": "0.0.0",
                     },
                 },

@@ -1,4 +1,4 @@
-"""Tests for issue #26670 — concurrent hermes.exe detection and improved
+"""Tests for issue # meridian.exe detection and improved
 quarantine retry / reboot-deferred fallback during `hermes update` on Windows.
 
 These tests force ``_is_windows`` to return ``True`` via patching so the

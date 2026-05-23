@@ -66,7 +66,7 @@ def test_matches_real_nous_hermes_chat_models(model_name: str) -> None:
         "nous-hermes-2-mistral",
         # Edge cases
         "",
-        "hermes",  # bare "hermes" isn't the 3/4 family
+        "hermes",  # bare "meridian" isn't the 3/4 family
         "hermes-brain",
         "brain-hermes-3-impostor",  # "3" not preceded by /: boundary
     ],

@@ -50,12 +50,12 @@ export const ko: Translations = {
   },
 
   app: {
-    brand: "Hermes Agent",
+    brand: "Meridian Agent",
     brandShort: "HA",
     closeNavigation: "내비게이션 닫기",
     closeModelTools: "모델 및 도구 닫기",
     footer: {
-      org: "Nous Research",
+      org: "Meridian AI",
     },
     activeSessionsLabel: "활성 세션:",
     gatewayStatusLabel: "게이트웨이 상태:",

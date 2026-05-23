@@ -292,7 +292,7 @@ export const parseVoiceRecordKey = (raw: unknown): ParsedVoiceRecordKey => {
     return DEFAULT_VOICE_RECORD_KEY
   }
 
-  // On macOS hermes-ink reports Alt as ``key.meta``, which ``isActionMod``
+  // Meridian-ink reports Alt as ``key.meta``, which ``isActionMod``
   // accepts as the mac action modifier. So ``alt+c`` / ``alt+d`` / ``alt+l``
   // collide with copy / exit / clear in ``useInputHandlers()`` before the
   // voice check. Reject at parse time on darwin only — non-mac ``alt+<letter>``
@@ -377,7 +377,7 @@ export const isVoiceToggleKey = (
       // Ctrl+Alt+<key> or Cmd+Alt+<key> doesn't spuriously fire the
       // alt binding.
       //
-      // Bare Escape on hermes-ink can arrive as ``key.meta=true`` on some
+      // Meridian-ink can arrive as ``key.meta=true`` on some
       // terminals, so a configured ``alt+escape`` must not match that shape;
       // require an explicit alt bit for escape chords (Copilot round-7
       // follow-up on #19835).
@@ -390,7 +390,7 @@ export const isVoiceToggleKey = (
       // The documented default (``ctrl+b``) additionally accepts the
       // explicit ``key.super`` bit on macOS for Cmd+B muscle memory —
       // but ONLY ``key.super`` (kitty-style), never ``key.meta``, since
-      // ``key.meta`` is hermes-ink's Alt signal and accepting it would
+      // Meridian-ink's Alt signal and accepting it would
       // fire the binding on Alt+B.
       if (key.ctrl) {
         return !key.alt && !key.meta && key.super !== true

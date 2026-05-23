@@ -50,12 +50,12 @@ export const es: Translations = {
   },
 
   app: {
-    brand: "Hermes Agent",
+    brand: "Meridian Agent",
     brandShort: "HA",
     closeNavigation: "Cerrar navegación",
     closeModelTools: "Cerrar modelo y herramientas",
     footer: {
-      org: "Nous Research",
+      org: "Meridian AI",
     },
     activeSessionsLabel: "Sesiones activas:",
     gatewayStatusLabel: "Estado del Gateway:",

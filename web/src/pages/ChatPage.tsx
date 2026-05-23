@@ -314,7 +314,7 @@ export default function ChatPage({ isActive = true }: { isActive?: boolean }) {
     //      terminal has a selection, then emits an OSC 52 escape.  Our
     //      OSC 52 handler below decodes that escape and writes to the
     //      browser clipboard — so the flow works just like it does in
-    //      `hermes --tui`.
+    // Meridian --tui`.
     //
     //   2. **Ctrl/Cmd+Shift+C.**  Belt-and-suspenders shortcut that
     //      operates directly on xterm's selection, useful if the TUI
@@ -603,7 +603,7 @@ export default function ChatPage({ isActive = true }: { isActive?: boolean }) {
     //
     // For the browser embed we prefer input stability over terminal-style
     // mouse reporting, so we drop SGR mouse reports entirely instead of
-    // forwarding them into Hermes. Keyboard input, paste, and resize still
+    // Meridian. Keyboard input, paste, and resize still
     // behave normally.
     // eslint-disable-next-line no-control-regex -- intentional ESC byte in xterm SGR mouse report parser
     const SGR_MOUSE_RE = /^\x1b\[<(\d+);(\d+);(\d+)([Mm])$/;

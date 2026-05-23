@@ -148,7 +148,7 @@ def find_docker() -> Optional[str]:
 # We drop all capabilities then add back the minimum needed:
 #   DAC_OVERRIDE - root can write to bind-mounted dirs owned by host user
 #   CHOWN/FOWNER - package managers (pip, npm, apt) need to set file ownership
-#   SETUID/SETGID - the image entrypoint drops from root to the 'hermes'
+#   SETUID/SETGID - the image entrypoint drops from root to the 'meridian'
 #       user via `gosu`, which requires these caps. Combined with
 #       `no-new-privileges`, gosu still cannot escalate back to root after
 #       the drop, so the security posture is preserved. Omitted entirely

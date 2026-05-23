@@ -1584,7 +1584,7 @@ class TestProfileArg:
 
     def test_hash_path_returns_empty(self, tmp_path, monkeypatch):
         """Arbitrary non-profile HERMES_HOME should return empty string."""
-        custom_home = tmp_path / "custom" / "hermes"
+        custom_home = tmp_path / "custom" / "meridian"
         custom_home.mkdir(parents=True)
         monkeypatch.setattr(Path, "home", lambda: tmp_path)
         monkeypatch.setenv("HERMES_HOME", str(tmp_path / ".hermes"))
@@ -1656,10 +1656,10 @@ class TestRemapPathForUser:
         monkeypatch.setattr(Path, "home", lambda: tmp_path / "root")
         (tmp_path / "root").mkdir()
         result = gateway_cli._remap_path_for_user(
-            str(tmp_path / "root" / ".hermes" / "hermes-agent"),
+            str(tmp_path / "root" / ".hermes" / "meridian-agent"),
             str(tmp_path / "alice"),
         )
-        assert result == str(tmp_path / "alice" / ".hermes" / "hermes-agent")
+        assert result == str(tmp_path / "alice" / ".hermes" / "meridian-agent")
 
     def test_keeps_system_path_unchanged(self, monkeypatch, tmp_path):
         monkeypatch.setattr(Path, "home", lambda: tmp_path / "root")
@@ -1670,7 +1670,7 @@ class TestRemapPathForUser:
     def test_noop_when_same_user(self, monkeypatch, tmp_path):
         monkeypatch.setattr(Path, "home", lambda: tmp_path / "alice")
         (tmp_path / "alice").mkdir()
-        original = str(tmp_path / "alice" / ".hermes" / "hermes-agent")
+        original = str(tmp_path / "alice" / ".hermes" / "meridian-agent")
         result = gateway_cli._remap_path_for_user(original, str(tmp_path / "alice"))
         assert result == original
 
@@ -1681,7 +1681,7 @@ class TestSystemUnitPathRemapping:
     def test_system_unit_has_no_root_paths(self, monkeypatch, tmp_path):
         root_home = tmp_path / "root"
         root_home.mkdir()
-        project = root_home / ".hermes" / "hermes-agent"
+        project = root_home / ".hermes" / "meridian-agent"
         project.mkdir(parents=True)
         venv_bin = project / "venv" / "bin"
         venv_bin.mkdir(parents=True)

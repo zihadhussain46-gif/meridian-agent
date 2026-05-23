@@ -58,9 +58,9 @@ _HERMES_MODEL_WARNING = (
 )
 
 # Match only the real Nous Research Hermes 3 / Hermes 4 chat families.
-# The previous substring check (`"hermes" in name.lower()`) false-positived on
+# The previous substring check (`"meridian" in name.lower()`) false-positived on
 # unrelated local Modelfiles like ``hermes-brain:qwen3-14b-ctx16k`` that just
-# happen to carry "hermes" in their tag but are fully tool-capable.
+# happen to carry "meridian" in their tag but are fully tool-capable.
 #
 # Positive examples the regex must match:
 #   NousResearch/Hermes-3-Llama-3.1-70B, hermes-4-405b, openrouter/hermes3:70b
@@ -1380,7 +1380,7 @@ def list_authenticated_providers(
             "is_user_defined": False,
             "models": top,
             "total_models": total,
-            "source": "hermes",
+            "source": "meridian",
         })
         seen_slugs.add(pid.lower())
         seen_slugs.add(hermes_slug.lower())

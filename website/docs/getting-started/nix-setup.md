@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: "Nix & NixOS Setup"
-description: "Install and deploy Hermes Agent with Nix — from quick `nix run` to fully declarative NixOS module with container mode"
+description: "Install and deploy Meridian Agent with Nix — from quick `nix run` to fully declarative NixOS module with container mode"
 ---
 
 # Nix & NixOS Setup
 
-Hermes Agent ships a Nix flake with three levels of integration:
+Meridian Agent ships a Nix flake with three levels of integration:
 
 | Level | Who it's for | What you get |
 |-------|-------------|--------------|
@@ -782,8 +782,8 @@ nix build .#checks.x86_64-linux.config-roundtrip    # merge script preserves use
 |---|---|---|---|
 | `enable` | `bool` | `false` | Enable the hermes-agent service |
 | `package` | `package` | `hermes-agent` | The hermes-agent package to use |
-| `user` | `str` | `"hermes"` | System user |
-| `group` | `str` | `"hermes"` | System group |
+| `user` | `str` | `"meridian"` | System user |
+| `group` | `str` | `"meridian"` | System group |
 | `createUser` | `bool` | `true` | Auto-create user/group |
 | `stateDir` | `str` | `"/var/lib/hermes"` | State directory (`HERMES_HOME` parent) |
 | `workingDirectory` | `str` | `"${stateDir}/workspace"` | Agent working directory (`MESSAGING_CWD`) |
@@ -970,6 +970,6 @@ nix-store --query --roots $(docker exec hermes-agent readlink /data/current-pack
 | `hermes version` shows old version | Container not restarted | `systemctl restart hermes-agent` |
 | Permission denied on `/var/lib/hermes` | State dir is `0750 hermes:hermes` | Use `docker exec` or `sudo -u hermes` |
 | `nix-collect-garbage` removed hermes | GC root missing | Restart the service (preStart recreates the GC root) |
-| `no container with name or ID "hermes-agent"` (Podman) | Podman rootful container not visible to regular user | Add passwordless sudo for podman (see [Container Mode](#container-mode) section) |
+| `no container with name or ID "meridian-agent"` (Podman) | Podman rootful container not visible to regular user | Add passwordless sudo for podman (see [Container Mode](#container-mode) section) |
 | `unable to find user hermes` | Container still starting (entrypoint hasn't created user yet) | Wait a few seconds and retry — the CLI retries automatically |
 | Tool added via `extraPackages` not found in terminal | Requires `nixos-rebuild switch` to update the per-user profile | Rebuild and restart: `nixos-rebuild switch && systemctl restart hermes-agent` |

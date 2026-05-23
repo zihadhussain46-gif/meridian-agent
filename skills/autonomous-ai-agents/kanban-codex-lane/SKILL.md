@@ -2,7 +2,7 @@
 name: kanban-codex-lane
 description: Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane while Hermes keeps ownership of task lifecycle, reconciliation, testing, and handoff.
 version: 1.0.0
-author: Hermes Agent
+author: Meridian Agent
 license: MIT
 metadata:
   hermes:
@@ -201,7 +201,7 @@ Hermes must perform this checklist before accepting any Codex lane result:
 - [ ] No secrets, credentials, generated caches, unrelated data, or local artifacts are included.
 - [ ] PMB safety constraints were preserved: no live REST order entry, no market orders, no execution crossing, no fake passive fills/PnL, no risk-gate weakening, no secrets.
 - [ ] Codex commits are small enough to cherry-pick or squash cleanly.
-- [ ] Hermes ran the canonical tests itself, using `scripts/run_tests.sh` for Hermes Agent or the repo's documented wrapper for other repos.
+- [ ] Hermes ran the canonical tests itself, using `scripts/run_tests.sh` for Meridian Agent or the repo's documented wrapper for other repos.
 - [ ] Any Codex-run tests are listed separately from Hermes-run tests.
 - [ ] Accepted commits/diffs were applied to the Hermes-owned workspace/branch.
 - [ ] Rejected or partial work has a concrete reason and artifact path if useful.
@@ -229,7 +229,7 @@ Include this object under `metadata.codex_lane` for every task where the lane wa
     "accepted_commits": ["<sha1>", "<sha2>"],
     "rejected_reason": "empty when fully accepted; otherwise concrete reason",
     "tests_run": [
-      {"command": "scripts/run_tests.sh tests/tools/test_x.py", "exit_code": 0, "owner": "hermes"},
+      {"command": "scripts/run_tests.sh tests/tools/test_x.py", "exit_code": 0, "owner": "meridian"},
       {"command": "codex-reported: npm test", "exit_code": 0, "owner": "codex"}
     ],
     "artifacts": ["/absolute/path/to/log-or-patch"]

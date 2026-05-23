@@ -20,7 +20,7 @@ MCP client config (e.g. claude_desktop_config.json):
     {
         "mcpServers": {
             "hermes": {
-                "command": "hermes",
+                "command": "meridian",
                 "args": ["mcp", "serve"]
             }
         }

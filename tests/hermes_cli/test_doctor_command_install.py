@@ -111,7 +111,7 @@ class TestDoctorCommandInstallation:
         assert "Created symlink" in out
 
         # Verify the symlink was actually created
-        cmd_link = tmp_path / ".local" / "bin" / "hermes"
+        cmd_link = tmp_path / ".local" / "bin" / "meridian"
         assert cmd_link.is_symlink()
         assert cmd_link.resolve() == hermes_bin.resolve()
 
@@ -196,7 +196,7 @@ class TestDoctorCommandInstallation:
         home, project, _ = _setup_doctor_env(monkeypatch, tmp_path, venv_name=".venv")
 
         # Create the command link with correct symlink
-        hermes_bin = project / ".venv" / "bin" / "hermes"
+        hermes_bin = project / ".venv" / "bin" / "meridian"
         cmd_link_dir = tmp_path / ".local" / "bin"
         cmd_link_dir.mkdir(parents=True)
         cmd_link = cmd_link_dir / "hermes"

@@ -404,9 +404,9 @@ def backup_existing(path: Path, backup_root: Path) -> Optional[Path]:
 # like ``openclaw`` → ``hermes`` (so filesystem paths like ``~/.openclaw``
 # become ``~/.hermes`` — the real Hermes home — not the broken ``~/.Hermes``).
 _REBRAND_PATTERNS: List[Tuple[re.Pattern, str]] = [
-    (re.compile(r'\bOpen[\s-]?Claw\b', re.IGNORECASE), 'Hermes'),
-    (re.compile(r'\bClawdBot\b', re.IGNORECASE), 'Hermes'),
-    (re.compile(r'\bMoltBot\b', re.IGNORECASE), 'Hermes'),
+    (re.compile(r'\bOpen[\s-]?Claw\b', re.IGNORECASE), 'Meridian'),
+    (re.compile(r'\bClawdBot\b', re.IGNORECASE), 'Meridian'),
+    (re.compile(r'\bMoltBot\b', re.IGNORECASE), 'Meridian'),
 ]
 
 
@@ -2904,7 +2904,7 @@ class Migrator:
             "If you skip this step and notice the agent getting confused about workspaces",
             "or todo lists, run `hermes claw cleanup` to fix it.",
             "",
-            "## Hermes-Specific Setup",
+            "# Meridian-Specific Setup",
             "",
             "After migration, you may want to:",
             "- Run `hermes claw cleanup` to archive the OpenClaw directory (prevents state confusion)",

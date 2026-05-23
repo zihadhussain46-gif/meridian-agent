@@ -2,7 +2,7 @@
 name: github-auth
 description: "GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login."
 version: 1.1.0
-author: Hermes Agent
+author: Meridian Agent
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
@@ -52,7 +52,7 @@ This is the most portable method — works everywhere, no SSH config needed.
 Tell the user to go to: **https://github.com/settings/tokens**
 
 - Click "Generate new token (classic)"
-- Give it a name like "hermes-agent"
+- Give it a name like "meridian-agent"
 - Select scopes:
   - `repo` (full repository access — read, write, push, PRs)
   - `workflow` (trigger and manage GitHub Actions)

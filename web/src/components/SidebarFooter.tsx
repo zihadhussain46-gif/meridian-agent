@@ -22,7 +22,7 @@ export function SidebarFooter() {
       </Typography>
 
       <a
-        href="https://nousresearch.com"
+        href="https:// MeridianAI.com"
         target="_blank"
         rel="noopener noreferrer"
         className={cn(

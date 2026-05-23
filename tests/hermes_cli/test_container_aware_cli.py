@@ -47,8 +47,8 @@ def test_get_container_exec_info_returns_metadata(container_env):
 
     assert info is not None
     assert info["backend"] == "podman"
-    assert info["container_name"] == "hermes-agent"
-    assert info["exec_user"] == "hermes"
+    assert info["container_name"] == "meridian-agent"
+    assert info["exec_user"] == "meridian"
     assert info["hermes_bin"] == "/data/current-package/bin/hermes"
 
 
@@ -112,8 +112,8 @@ def test_get_container_exec_info_defaults():
 
         assert info is not None
         assert info["backend"] == "docker"
-        assert info["container_name"] == "hermes-agent"
-        assert info["exec_user"] == "hermes"
+        assert info["container_name"] == "meridian-agent"
+        assert info["exec_user"] == "meridian"
         assert info["hermes_bin"] == "/data/current-package/bin/hermes"
 
 
@@ -152,8 +152,8 @@ def test_get_container_exec_info_crashes_on_permission_error(container_env):
 def docker_container_info():
     return {
         "backend": "docker",
-        "container_name": "hermes-agent",
-        "exec_user": "hermes",
+        "container_name": "meridian-agent",
+        "exec_user": "meridian",
         "hermes_bin": "/data/current-package/bin/hermes",
     }
 
@@ -162,8 +162,8 @@ def docker_container_info():
 def podman_container_info():
     return {
         "backend": "podman",
-        "container_name": "hermes-agent",
-        "exec_user": "hermes",
+        "container_name": "meridian-agent",
+        "exec_user": "meridian",
         "hermes_bin": "/data/current-package/bin/hermes",
     }
 

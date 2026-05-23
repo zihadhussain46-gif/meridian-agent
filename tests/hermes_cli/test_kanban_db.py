@@ -1701,7 +1701,7 @@ class TestSharedBoardPaths:
         # `get_default_hermes_root()` returns env_home directly when it
         # is not a `<root>/profiles/<name>` shape and not under
         # `Path.home() / ".hermes"`.
-        custom_root = tmp_path / "opt" / "hermes"
+        custom_root = tmp_path / "opt" / "meridian"
         custom_root.mkdir(parents=True)
         self._set_home(monkeypatch, tmp_path, custom_root)
 
@@ -1714,7 +1714,7 @@ class TestSharedBoardPaths:
         # Docker profile shape: HERMES_HOME=/opt/hermes/profiles/coder;
         # `get_default_hermes_root()` walks up to /opt/hermes because
         # the immediate parent dir is named "profiles".
-        custom_root = tmp_path / "opt" / "hermes"
+        custom_root = tmp_path / "opt" / "meridian"
         profile = custom_root / "profiles" / "coder"
         profile.mkdir(parents=True)
         self._set_home(monkeypatch, tmp_path, profile)
@@ -2159,7 +2159,7 @@ def test_migrate_add_optional_columns_tolerates_concurrent_migration(kanban_home
 # Workers spawned by the dispatcher must use a `hermes` invocation that does
 # not depend on PATH being set up correctly. cron jobs, systemd User= services,
 # launchd jobs, and other detached processes routinely run with a stripped
-# $PATH that doesn't include the venv's bin/, so a bare `["hermes", ...]`
+# $PATH that doesn't include the venv's bin/, so a bare `["meridian", ...]`
 # spawn fails with FileNotFoundError and the task gets stuck. The resolver
 # prefers the PATH shim (familiar `ps` output) but falls back to the module
 # form so the spawn keeps working when PATH is missing the shim.
@@ -2209,7 +2209,7 @@ def test_resolve_hermes_argv_honors_hermes_bin_path_override(monkeypatch, tmp_pa
     import shutil
     import hermes_cli.kanban_db as kb
 
-    shim = tmp_path / "bin" / "hermes"
+    shim = tmp_path / "bin" / "meridian"
     shim.parent.mkdir()
     shim.write_text("#!/bin/sh\n", encoding="utf-8")
     monkeypatch.setenv("HERMES_BIN", str(shim))
@@ -2226,13 +2226,13 @@ def test_resolve_hermes_argv_hermes_bin_bare_name_uses_path(monkeypatch, tmp_pat
     cwd_hermes = tmp_path / "hermes"
     cwd_hermes.write_text("wrong\n", encoding="utf-8")
     cwd_hermes.chmod(cwd_hermes.stat().st_mode | stat.S_IXUSR)
-    path_hermes = tmp_path / "bin" / "hermes"
+    path_hermes = tmp_path / "bin" / "meridian"
     path_hermes.parent.mkdir()
     path_hermes.write_text("right\n", encoding="utf-8")
     path_hermes.chmod(path_hermes.stat().st_mode | stat.S_IXUSR)
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("PATH", str(path_hermes.parent))
-    monkeypatch.setenv("HERMES_BIN", "hermes")
+    monkeypatch.setenv("HERMES_BIN", "meridian")
 
     assert kb._resolve_hermes_argv() == [str(path_hermes)]
 
@@ -2245,7 +2245,7 @@ def test_resolve_hermes_argv_hermes_bin_bare_name_ignores_cwd(monkeypatch, tmp_p
     (tmp_path / "hermes.exe").write_text("wrong\n", encoding="utf-8")
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("PATH", "")
-    monkeypatch.setenv("HERMES_BIN", "hermes")
+    monkeypatch.setenv("HERMES_BIN", "meridian")
     monkeypatch.setattr(kb, "_IS_WINDOWS", True)
 
     assert kb._resolve_hermes_argv() == [sys.executable, "-m", "hermes_cli.main"]
@@ -2261,7 +2261,7 @@ def test_resolve_hermes_argv_hermes_bin_bare_cmd_uses_module_fallback(monkeypatc
     (bin_dir / "hermes.CMD").write_text("@echo off\n", encoding="utf-8")
     monkeypatch.setenv("PATH", str(bin_dir))
     monkeypatch.setenv("PATHEXT", ".CMD")
-    monkeypatch.setenv("HERMES_BIN", "hermes")
+    monkeypatch.setenv("HERMES_BIN", "meridian")
     monkeypatch.setattr(kb, "_IS_WINDOWS", True)
 
     assert kb._resolve_hermes_argv() == [sys.executable, "-m", "hermes_cli.main"]
@@ -2273,7 +2273,7 @@ def test_resolve_hermes_argv_hermes_bin_unresolved_bare_name_falls_back(monkeypa
     import hermes_cli.kanban_db as kb
 
     monkeypatch.setenv("PATH", "")
-    monkeypatch.setenv("HERMES_BIN", "hermes")
+    monkeypatch.setenv("HERMES_BIN", "meridian")
 
     assert kb._resolve_hermes_argv() == [sys.executable, "-m", "hermes_cli.main"]
 

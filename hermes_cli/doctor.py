@@ -912,7 +912,7 @@ def run_doctor(args):
         if should_fix:
             soul_path.parent.mkdir(parents=True, exist_ok=True)
             soul_path.write_text(
-                "# Hermes Agent Persona\n\n"
+                "# Meridian Agent Persona\n\n"
                 "<!-- Edit this file to customize how Hermes communicates. -->\n\n"
                 "You are Hermes, a helpful AI assistant.\n",
                 encoding="utf-8",
@@ -990,7 +990,7 @@ def run_doctor(args):
         # Determine the venv entry point location
         _venv_bin = None
         for _venv_name in ("venv", ".venv"):
-            _candidate = PROJECT_ROOT / _venv_name / "bin" / "hermes"
+            _candidate = PROJECT_ROOT / _venv_name / "bin" / "meridian"
             if _candidate.exists():
                 _venv_bin = _candidate
                 break

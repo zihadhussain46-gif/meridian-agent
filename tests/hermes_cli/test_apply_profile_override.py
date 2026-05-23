@@ -42,7 +42,7 @@ def _run_apply_profile_override(
     else:
         monkeypatch.delenv("HERMES_HOME", raising=False)
 
-    monkeypatch.setattr(sys, "argv", argv or ["hermes", "gateway", "start"])
+    monkeypatch.setattr(sys, "argv", argv or ["meridian", "gateway", "start"])
 
     from hermes_cli.main import _apply_profile_override
     _apply_profile_override()
@@ -102,7 +102,7 @@ class TestApplyProfileOverrideHermesHomeGuard:
 
         monkeypatch.setattr(Path, "home", lambda: tmp_path)
         monkeypatch.setenv("HERMES_HOME", str(profile_dir))
-        monkeypatch.setattr(sys, "argv", ["hermes", "gateway", "start"])
+        monkeypatch.setattr(sys, "argv", ["meridian", "gateway", "start"])
 
         from hermes_cli.main import _apply_profile_override
         _apply_profile_override()
@@ -132,7 +132,7 @@ class TestApplyProfileOverrideHermesHomeGuard:
 
         monkeypatch.setattr(Path, "home", lambda: tmp_path)
         monkeypatch.delenv("HERMES_HOME", raising=False)
-        monkeypatch.setattr(sys, "argv", ["hermes", "gateway", "start"])
+        monkeypatch.setattr(sys, "argv", ["meridian", "gateway", "start"])
         (hermes_root / "active_profile").write_text("default")
 
         from hermes_cli.main import _apply_profile_override

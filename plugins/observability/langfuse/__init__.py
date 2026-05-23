@@ -544,7 +544,7 @@ def _start_root_trace(task_key: str, *, task_id: str, session_id: str, platform:
     trace_id = client.create_trace_id(seed=f"{session_id or 'sessionless'}::{task_id or task_key}")
     trace_input = _extract_last_user_message(messages)
     metadata = {
-        "source": "hermes",
+        "source": "meridian",
         "task_id": task_id,
         "platform": platform,
         "provider": provider,

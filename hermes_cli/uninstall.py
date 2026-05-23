@@ -64,8 +64,8 @@ def remove_path_from_shell_configs():
             skip_next = False
             
             for line in content.split('\n'):
-                # Skip the "# Hermes Agent" comment and following line
-                if '# Hermes Agent' in line or '# hermes-agent' in line:
+                # Skip the "# Meridian Agent" comment and following line
+                if '# meridian-agent' in line:
                     skip_next = True
                     continue
                 if skip_next and ('hermes' in line.lower() and 'PATH' in line):
@@ -98,7 +98,7 @@ def remove_path_from_shell_configs():
 def remove_wrapper_script():
     """Remove the hermes wrapper script if it exists."""
     wrapper_paths = [
-        Path.home() / ".local" / "bin" / "hermes",
+        Path.home() / ".local" / "bin" / "meridian",
         Path("/usr/local/bin/hermes"),
     ]
     
@@ -108,7 +108,7 @@ def remove_wrapper_script():
             try:
                 # Check if it's our wrapper (contains hermes_cli reference)
                 content = wrapper.read_text()
-                if 'hermes_cli' in content or 'hermes-agent' in content:
+                if 'hermes_cli' in content or 'meridian-agent' in content:
                     wrapper.unlink()
                     removed.append(wrapper)
             except Exception as e:
@@ -267,7 +267,7 @@ def _hermes_path_markers(hermes_home: Path) -> list[str]:
     # all get swept.  Also match the bare hermes-agent install dir.
     markers = [root + "\\hermes-agent", root + "\\git", root + "\\node", root + "\\venv"]
     # Also match if HERMES_HOME was customised to somewhere else — find-and-nuke
-    # any entry whose path component contains "hermes".  We don't want to catch
+    # any entry whose path component contains "meridian".  We don't want to catch
     # unrelated entries like "chermes-foo" or "ephermeral", so we look for
     # backslash-hermes as a word-ish boundary.
     return markers

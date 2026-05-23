@@ -251,8 +251,8 @@ class TestConfig:
 
         cfg = _load_config()
         assert cfg["apiKey"] == "env-key"
-        assert cfg["banks"]["hermes"]["bankId"] == "env-bank"
-        assert cfg["banks"]["hermes"]["budget"] == "high"
+        assert cfg["banks"]["meridian"]["bankId"] == "env-bank"
+        assert cfg["banks"]["meridian"]["budget"] == "high"
 
     def test_embedded_profile_env_includes_idle_timeout_from_config(self):
         env = _build_embedded_profile_env({
@@ -286,7 +286,7 @@ class TestConfig:
         p = HindsightMemoryProvider()
         p._mode = "local_embedded"
         p._config = {
-            "profile": "hermes",
+            "profile": "meridian",
             "llm_provider": "openai_compatible",
             "llm_api_key": "test-key",
             "llm_model": "test-model",
@@ -398,7 +398,7 @@ class TestPostSetup:
             "llm_base_url": "http://192.168.1.161:8060/v1",
             "llm_api_key": "9913",
             "llm_model": "gemma-4-26B-A4B-it-heretic-oQ4",
-            "bank_id": "hermes",
+            "bank_id": "meridian",
             "recall_budget": "mid",
             "idle_timeout": 0,
             "HINDSIGHT_EMBED_DAEMON_IDLE_TIMEOUT": "0",
@@ -686,7 +686,7 @@ class TestSyncTurn:
         assert content[0][0]["content"] == "User (fakeusername): hello"
         assert content[0][1]["role"] == "assistant"
         assert content[0][1]["content"] == "Assistant (fakeassistantname): hi there"
-        assert item["metadata"]["source"] == "hermes"
+        assert item["metadata"]["source"] == "meridian"
         assert item["metadata"]["session_id"] == "session-1"
         assert item["metadata"]["platform"] == "discord"
         assert item["metadata"]["user_id"] == "fakeusername-123"
@@ -1232,7 +1232,7 @@ class TestConfigSchema:
 
 class TestBankIdTemplate:
     def test_sanitize_bank_segment_passthrough(self):
-        assert _sanitize_bank_segment("hermes") == "hermes"
+        assert _sanitize_bank_segment("hermes") == "meridian"
         assert _sanitize_bank_segment("my-agent_1") == "my-agent_1"
 
     def test_sanitize_bank_segment_strips_unsafe(self):
@@ -1246,13 +1246,13 @@ class TestBankIdTemplate:
 
     def test_resolve_empty_template_uses_fallback(self):
         result = _resolve_bank_id_template(
-            "", fallback="hermes", profile="coder"
+            "", fallback="meridian", profile="coder"
         )
         assert result == "hermes"
 
     def test_resolve_with_profile(self):
         result = _resolve_bank_id_template(
-            "hermes-{profile}", fallback="hermes",
+            "hermes-{profile}", fallback="meridian",
             profile="coder", workspace="", platform="", user="", session="",
         )
         assert result == "hermes-coder"
@@ -1267,7 +1267,7 @@ class TestBankIdTemplate:
         assert result == "myorg-coder-cli"
 
     def test_resolve_collapses_empty_placeholders(self):
-        # When user is empty, "hermes-{user}" becomes "hermes-" -> trimmed to "hermes"
+        # When user is empty, "hermes-{user}" becomes "hermes-" -> trimmed to "meridian"
         result = _resolve_bank_id_template(
             "hermes-{user}", fallback="default",
             profile="", workspace="", platform="", user="", session="",
@@ -1291,7 +1291,7 @@ class TestBankIdTemplate:
 
     def test_resolve_sanitizes_placeholder_values(self):
         result = _resolve_bank_id_template(
-            "user-{user}", fallback="hermes",
+            "user-{user}", fallback="meridian",
             profile="", workspace="", platform="",
             user="josh@example.com", session="",
         )
@@ -1300,7 +1300,7 @@ class TestBankIdTemplate:
     def test_resolve_invalid_template_returns_fallback(self):
         # Unknown placeholder should fall back without raising
         result = _resolve_bank_id_template(
-            "hermes-{unknown}", fallback="hermes",
+            "hermes-{unknown}", fallback="meridian",
             profile="", workspace="", platform="", user="", session="",
         )
         assert result == "hermes"
@@ -1364,7 +1364,7 @@ class TestBankIdTemplate:
         monkeypatch.setattr("plugins.memory.hindsight.get_hermes_home", lambda: tmp_path)
 
         p = HindsightMemoryProvider()
-        # No agent_identity passed — template renders to "hermes-" which collapses to "hermes"
+        # No agent_identity passed — template renders to "hermes-" which collapses to "meridian"
         p.initialize(session_id="s1", hermes_home=str(tmp_path), platform="cli")
         assert p._bank_id == "hermes"
 

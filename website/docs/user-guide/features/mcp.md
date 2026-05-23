@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
 title: "MCP (Model Context Protocol)"
-description: "Connect Hermes Agent to external tool servers via MCP — and control exactly which MCP tools Hermes loads"
+description: "Connect Meridian Agent to external tool servers via MCP — and control exactly which MCP tools Hermes loads"
 ---
 
 # MCP (Model Context Protocol)
 
-MCP lets Hermes Agent connect to external tool servers so the agent can use tools that live outside Hermes itself — GitHub, databases, file systems, browser stacks, internal APIs, and more.
+MCP lets Meridian Agent connect to external tool servers so the agent can use tools that live outside Hermes itself — GitHub, databases, file systems, browser stacks, internal APIs, and more.
 
 If you have ever wanted Hermes to use a tool that already exists somewhere else, MCP is usually the cleanest way to do it.
 
@@ -509,8 +509,8 @@ Add Hermes to your MCP client config. For example, in Claude Code's `~/.claude/c
 ```json
 {
   "mcpServers": {
-    "hermes": {
-      "command": "hermes",
+    "meridian": {
+      "command": "meridian",
       "args": ["mcp", "serve"]
     }
   }
@@ -522,7 +522,7 @@ Or if you installed Hermes in a specific location:
 ```json
 {
   "mcpServers": {
-    "hermes": {
+    "meridian": {
       "command": "/home/user/.hermes/hermes-agent/venv/bin/hermes",
       "args": ["mcp", "serve"]
     }

@@ -69,7 +69,7 @@ def test_run_gateway_exits_nonzero_when_start_gateway_reports_failure(monkeypatc
 
 
 def test_run_gateway_refuses_root_in_official_docker(monkeypatch, tmp_path, capsys):
-    project_root = tmp_path / "opt" / "hermes"
+    project_root = tmp_path / "opt" / "meridian"
     (project_root / "docker").mkdir(parents=True)
     (project_root / "docker" / "entrypoint.sh").write_text("#!/bin/sh\n")
 

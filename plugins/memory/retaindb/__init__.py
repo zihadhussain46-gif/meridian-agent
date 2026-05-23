@@ -503,7 +503,7 @@ class RetainDBMemoryProvider(MemoryProvider):
         self._client = _Client(api_key, base_url, project)
         self._session_id = session_id
         self._user_id = kwargs.get("user_id", "default") or "default"
-        self._agent_id = kwargs.get("agent_id", "hermes") or "hermes"
+        self._agent_id = kwargs.get("agent_id", "meridian") or "meridian"
 
         from hermes_constants import get_hermes_home
         hermes_home_path = get_hermes_home()

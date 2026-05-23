@@ -87,8 +87,8 @@ class TestIRCAdapterInit:
             extra={
                 "server": "irc.libera.chat",
                 "port": 6697,
-                "nickname": "hermes",
-                "channel": "#hermes-dev",
+                "nickname": "meridian",
+                "channel": "# meridian-dev",
                 "use_tls": True,
             },
         )
@@ -97,7 +97,7 @@ class TestIRCAdapterInit:
         assert adapter.server == "irc.libera.chat"
         assert adapter.port == 6697
         assert adapter.nickname == "hermes"
-        assert adapter.channel == "#hermes-dev"
+        assert adapter.channel == "# meridian-dev"
         assert adapter.use_tls is True
 
     def test_env_overrides_config(self, monkeypatch):
@@ -180,7 +180,7 @@ class TestIRCAdapterMessageParsing:
             extra={
                 "server": "localhost",
                 "port": 6667,
-                "nickname": "hermes",
+                "nickname": "meridian",
                 "channel": "#test",
                 "use_tls": False,
             },
@@ -239,7 +239,7 @@ class TestIRCAdapterMessageParsing:
 
         adapter._dispatch_message = capture_dispatch
 
-        await adapter._handle_line(":user!u@host PRIVMSG #test :hermes: hello there")
+        await adapter._handle_line(":user!u@host PRIVMSG # meridian: hello there")
         assert len(dispatched) == 1
         assert dispatched[0]["text"] == "hello there"
         assert dispatched[0]["chat_id"] == "#test"
@@ -313,7 +313,7 @@ class TestIRCAdapterMessageParsing:
             extra={
                 "server": "localhost",
                 "port": 6667,
-                "nickname": "hermes",
+                "nickname": "meridian",
                 "channel": "#test",
                 "use_tls": False,
                 "allowed_users": ["Admin", "BOB"],
@@ -331,7 +331,7 @@ class TestIRCAdapterMessageParsing:
         adapter._message_handler = AsyncMock()
 
         # "admin" matches "Admin" in allowlist
-        await adapter._handle_line(":admin!u@host PRIVMSG #test :hermes: hello")
+        await adapter._handle_line(":admin!u@host PRIVMSG # meridian: hello")
         assert len(dispatched) == 1
         assert dispatched[0]["text"] == "hello"
 
@@ -346,7 +346,7 @@ class TestIRCAdapterMessageParsing:
             extra={
                 "server": "localhost",
                 "port": 6667,
-                "nickname": "hermes",
+                "nickname": "meridian",
                 "channel": "#test",
                 "use_tls": False,
                 "allowed_users": ["Admin", "BOB"],
@@ -363,7 +363,7 @@ class TestIRCAdapterMessageParsing:
         adapter._dispatch_message = capture_dispatch
         adapter._message_handler = AsyncMock()
 
-        await adapter._handle_line(":eve!u@host PRIVMSG #test :hermes: hello")
+        await adapter._handle_line(":eve!u@host PRIVMSG # meridian: hello")
         assert len(dispatched) == 0
 
     @pytest.mark.asyncio

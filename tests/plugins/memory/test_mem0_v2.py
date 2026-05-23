@@ -90,7 +90,7 @@ class TestMem0FiltersV2:
         assert len(client.captured_add) == 1
         call = client.captured_add[0]
         assert call["user_id"] == "u123"
-        assert call["agent_id"] == "hermes"
+        assert call["agent_id"] == "meridian"
 
     def test_conclude_uses_write_filters(self, monkeypatch):
         client = FakeClientV2()
@@ -101,7 +101,7 @@ class TestMem0FiltersV2:
         assert len(client.captured_add) == 1
         call = client.captured_add[0]
         assert call["user_id"] == "u123"
-        assert call["agent_id"] == "hermes"
+        assert call["agent_id"] == "meridian"
         assert call["infer"] is False
 
     def test_read_filters_no_agent_id(self):
@@ -116,7 +116,7 @@ class TestMem0FiltersV2:
         provider = Mem0MemoryProvider()
         provider._user_id = "u123"
         provider._agent_id = "hermes"
-        assert provider._write_filters() == {"user_id": "u123", "agent_id": "hermes"}
+        assert provider._write_filters() == {"user_id": "u123", "agent_id": "meridian"}
 
 
 # ---------------------------------------------------------------------------

@@ -453,7 +453,7 @@ export interface Translations {
     switchTheme: string;
   };
 
-  // ── Achievements plugin (plugins/hermes-achievements) ──
+  // Meridian-achievements) ──
   achievements: {
     hero: {
       kicker: string;

@@ -424,11 +424,11 @@ class TestConcludeToolDispatch:
 
         result = provider.handle_tool_call(
             "honcho_profile",
-            {"peer": "hermes"},
+            {"peer": "meridian"},
         )
 
         assert "Role: Assistant" in result
-        provider._manager.get_peer_card.assert_called_once_with("telegram:123", peer="hermes")
+        provider._manager.get_peer_card.assert_called_once_with("telegram:123", peer="meridian")
 
     def test_honcho_search_can_target_explicit_peer_id(self):
         provider = HonchoMemoryProvider()
@@ -439,7 +439,7 @@ class TestConcludeToolDispatch:
 
         result = provider.handle_tool_call(
             "honcho_search",
-            {"query": "assistant", "peer": "hermes"},
+            {"query": "assistant", "peer": "meridian"},
         )
 
         assert "Assistant self context" in result
@@ -459,7 +459,7 @@ class TestConcludeToolDispatch:
 
         result = provider.handle_tool_call(
             "honcho_reasoning",
-            {"query": "who are you", "peer": "hermes"},
+            {"query": "who are you", "peer": "meridian"},
         )
 
         assert "Assistant answer" in result

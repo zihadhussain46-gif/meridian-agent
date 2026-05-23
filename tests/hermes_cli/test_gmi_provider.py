@@ -321,7 +321,7 @@ class TestGmiMainFlow:
             "hermes_cli.main.cmd_chat",
             lambda args: recorded.setdefault("provider", args.provider),
         )
-        monkeypatch.setattr(sys, "argv", ["hermes", "chat", "--provider", "gmi"])
+        monkeypatch.setattr(sys, "argv", ["meridian", "chat", "--provider", "gmi"])
 
         from hermes_cli.main import main
 

@@ -367,7 +367,7 @@ def test_viking_client_headers_send_tenant_when_default():
     headers = client._headers()
     assert headers["X-OpenViking-Account"] == "default"
     assert headers["X-OpenViking-User"] == "default"
-    assert headers["X-OpenViking-Agent"] == "hermes"
+    assert headers["X-OpenViking-Agent"] == "meridian"
     assert headers["Authorization"] == "Bearer test-key"
 
 

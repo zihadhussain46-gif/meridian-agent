@@ -1,4 +1,4 @@
-# OpenAI-Compatible API Server for Hermes Agent
+# OpenAI-Compatible API Server for Meridian Agent
 
 ## Motivation
 
@@ -69,7 +69,7 @@ Authorization: Bearer hermes-api-key-here
 Content-Type: application/json
 
 {
-  "model": "hermes-agent",
+  "model": "meridian-agent",
   "messages": [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "What files are in the current directory?"}
@@ -85,7 +85,7 @@ Response:
   "id": "chatcmpl-abc123",
   "object": "chat.completion",
   "created": 1710000000,
-  "model": "hermes-agent",
+  "model": "meridian-agent",
   "choices": [{
     "index": 0,
     "message": {
@@ -130,10 +130,10 @@ Response:
 {
   "object": "list",
   "data": [{
-    "id": "hermes-agent",
+    "id": "meridian-agent",
     "object": "model",
     "created": 1710000000,
-    "owned_by": "hermes-agent"
+    "owned_by": "meridian-agent"
   }]
 }
 ```
@@ -187,7 +187,7 @@ Two modes:
 
 ### 5. Model Mapping
 
-Frontends send `"model": "hermes-agent"` (or whatever). The actual LLM model
+Frontends send `"model": "meridian-agent"` (or whatever). The actual LLM model
 used is configured server-side in config.yaml. The API server maps any
 requested model name to the configured hermes-agent model.
 

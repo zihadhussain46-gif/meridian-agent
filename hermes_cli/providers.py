@@ -230,7 +230,7 @@ class ProviderDef:
     is_aggregator: bool = False
     auth_type: str = "api_key"
     doc: str = ""
-    source: str = ""                      # "models.dev", "hermes", "user-config"
+    source: str = ""                      # "models.dev", "meridian", "user-config"
 
 
 # -- Aliases ------------------------------------------------------------------

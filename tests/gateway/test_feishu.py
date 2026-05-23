@@ -3802,7 +3802,7 @@ class TestFeishuMentionMap(unittest.TestCase):
         mention = SimpleNamespace(key="@_all", id=None, name="")
         result = _build_mentions_map(
             [mention],
-            _FeishuBotIdentity(open_id="ou_bot", name="Hermes"),
+            _FeishuBotIdentity(open_id="ou_bot", name="Meridian"),
         )
         self.assertEqual(result["@_all"], FeishuMentionRef(is_all=True))
 
@@ -4069,7 +4069,7 @@ class TestFeishuNormalizeText(unittest.TestCase):
     def test_renders_self_mention_with_name(self):
         from gateway.platforms.feishu import _normalize_feishu_text, FeishuMentionRef
 
-        refs = {"@_user_1": FeishuMentionRef(name="Hermes", open_id="ou_bot", is_self=True)}
+        refs = {"@_user_1": FeishuMentionRef(name="Meridian", open_id="ou_bot", is_self=True)}
         self.assertEqual(
             _normalize_feishu_text("stop pinging @_user_1 please", refs),
             "stop pinging @Hermes please",
@@ -4252,7 +4252,7 @@ class TestFeishuNormalizeWithMentions(unittest.TestCase):
             "en_us": {
                 "content": [
                     [
-                        {"tag": "at", "user_id": "@_user_1", "user_name": "Hermes"},
+                        {"tag": "at", "user_id": "@_user_1", "user_name": "Meridian"},
                         {"tag": "text", "text": " check this"},
                     ]
                 ]
@@ -4633,7 +4633,7 @@ class TestFeishuFetchMessageText(unittest.TestCase):
         self.assertFalse(ref.is_self)
 
         # open_id discriminator, is_self matches via open_id
-        bot_oid = SimpleNamespace(key="@_user_3", id="ou_bot", id_type="open_id", name="Hermes")
+        bot_oid = SimpleNamespace(key="@_user_3", id="ou_bot", id_type="open_id", name="Meridian")
         self.assertTrue(
             _build_mentions_map([bot_oid], _FeishuBotIdentity(open_id="ou_bot"))["@_user_3"].is_self
         )
@@ -4692,7 +4692,7 @@ class TestFeishuMentionEndToEnd(unittest.TestCase):
             adapter,
             "@_user_1 @_user_2 @_user_3 build me a group",
             [
-                {"key": "@_user_1", "open_id": "ou_bot", "name": "Hermes"},
+                {"key": "@_user_1", "open_id": "ou_bot", "name": "Meridian"},
                 {"key": "@_user_2", "open_id": "ou_alice", "name": "Alice"},
                 {"key": "@_user_3", "open_id": "ou_bob", "name": "Bob"},
             ],
@@ -4718,7 +4718,7 @@ class TestFeishuMentionEndToEnd(unittest.TestCase):
         event = self._run(
             adapter,
             "who are you @_user_1",
-            [{"key": "@_user_1", "open_id": "ou_bot", "name": "Hermes"}],
+            [{"key": "@_user_1", "open_id": "ou_bot", "name": "Meridian"}],
         )
         self.assertEqual(event.text, "who are you")
 
@@ -4729,7 +4729,7 @@ class TestFeishuMentionEndToEnd(unittest.TestCase):
         event = self._run(
             adapter,
             "please don't @_user_1 anymore",
-            [{"key": "@_user_1", "open_id": "ou_bot", "name": "Hermes"}],
+            [{"key": "@_user_1", "open_id": "ou_bot", "name": "Meridian"}],
         )
         self.assertEqual(event.text, "please don't @Hermes anymore")
 
@@ -4794,7 +4794,7 @@ class TestFeishuMentionEndToEnd(unittest.TestCase):
         post_content = json.dumps({
             "zh_cn": {
                 "content": [[
-                    {"tag": "at", "user_id": "@_user_1", "user_name": "Hermes"},
+                    {"tag": "at", "user_id": "@_user_1", "user_name": "Meridian"},
                     {"tag": "at", "user_id": "@_user_2", "user_name": "Alice"},
                     {"tag": "text", "text": " review the spec with Alice"},
                 ]]

@@ -48,10 +48,10 @@ logger = logging.getLogger(__name__)
 # Marker comments wrapping the managed section so re-runs can detect
 # what's ours and what's user-edited. Both must appear or strip is a no-op.
 MIGRATION_MARKER = (
-    "# managed by hermes-agent — `hermes codex-runtime migrate` regenerates this section"
+    "# meridian-agent — `hermes codex-runtime migrate` regenerates this section"
 )
 MIGRATION_END_MARKER = (
-    "# end hermes-agent managed section"
+    "# meridian-agent managed section"
 )
 
 
@@ -263,7 +263,7 @@ def render_codex_toml_section(
     """
     out = [MIGRATION_MARKER]
     if not servers and not plugins and not default_permission_profile:
-        out.append("# (no MCP servers, plugins, or permissions configured by Hermes)")
+        out.append("# Meridian)")
         out.append(MIGRATION_END_MARKER)
         return "\n".join(out) + "\n"
 

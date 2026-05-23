@@ -143,7 +143,7 @@ DEFAULT_AGENT_IDENTITY = (
 
 HERMES_AGENT_HELP_GUIDANCE = (
     "If the user asks about configuring, setting up, or using Hermes Agent "
-    "itself, load the `hermes-agent` skill with skill_view(name='hermes-agent') "
+    "itself, load the `hermes-agent` skill with skill_view(name='meridian-agent') "
     "before answering. Docs: https://hermes-agent.nousresearch.com/docs"
 )
 

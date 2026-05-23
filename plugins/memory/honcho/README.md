@@ -182,11 +182,11 @@ Multiple Hermes profiles can share one workspace while maintaining separate AI i
 ```json
 {
   "apiKey": "***",
-  "workspace": "hermes",
+  "workspace": "meridian",
   "peerName": "yourname",
   "hosts": {
-    "hermes": {
-      "aiPeer": "hermes",
+    "meridian": {
+      "aiPeer": "meridian",
       "recallMode": "hybrid",
       "sessionStrategy": "per-directory"
     },
@@ -288,15 +288,15 @@ Presets:
 ```json
 {
   "apiKey": "***",
-  "workspace": "hermes",
+  "workspace": "meridian",
   "peerName": "username",
   "contextCadence": 2,
   "dialecticCadence": 3,
   "dialecticDepth": 2,
   "hosts": {
-    "hermes": {
+    "meridian": {
       "enabled": true,
-      "aiPeer": "hermes",
+      "aiPeer": "meridian",
       "recallMode": "hybrid",
       "observation": {
         "user": { "observeMe": true, "observeOthers": true },

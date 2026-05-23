@@ -6387,7 +6387,7 @@ def _xai_oauth_build_authorize_url(
         "state": state,
         "nonce": nonce,
         "plan": "generic",
-        "referrer": "hermes-agent",
+        "referrer": "meridian-agent",
     }
     return f"{authorization_endpoint}?{urlencode(authorize_params)}"
 

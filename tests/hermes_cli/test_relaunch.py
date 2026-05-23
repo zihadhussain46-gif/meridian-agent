@@ -21,14 +21,14 @@ class TestResolveHermesBin:
         fake.chmod(0o755)
         monkeypatch.setattr(sys, "argv", [str(fake.name)])
         monkeypatch.chdir(tmp_path)
-        # Ensure we don't accidentally match a real 'hermes' on PATH
+        # Ensure we don't accidentally match a real 'meridian' on PATH
         monkeypatch.setattr(relaunch_mod.shutil, "which", lambda _name: None)
         assert relaunch_mod.resolve_hermes_bin() == str(fake)
 
     def test_falls_back_to_path_which(self, monkeypatch):
         monkeypatch.setattr(sys, "argv", ["-c"])  # not a real path
         monkeypatch.setattr(
-            relaunch_mod.shutil, "which", lambda name: "/usr/bin/hermes" if name == "hermes" else None
+            relaunch_mod.shutil, "which", lambda name: "/usr/bin/hermes" if name == "meridian" else None
         )
         assert relaunch_mod.resolve_hermes_bin() == "/usr/bin/hermes"
 
@@ -253,7 +253,7 @@ class TestResolveHermesBinWindowsPyGuard:
         # exercise the None-fallback path (that's a separate test).
         monkeypatch.setattr(
             relaunch_mod.shutil, "which",
-            lambda name: r"C:\venv\Scripts\hermes.exe" if name == "hermes" else None,
+            lambda name: r"C:\venv\Scripts\hermes.exe" if name == "meridian" else None,
         )
 
         bin_path = relaunch_mod.resolve_hermes_bin()

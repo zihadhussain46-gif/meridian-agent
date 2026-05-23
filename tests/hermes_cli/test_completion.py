@@ -127,7 +127,7 @@ class TestGenerateBash:
 class TestGenerateZsh:
     def test_contains_compdef_header(self):
         out = generate_zsh(_make_parser())
-        assert "#compdef hermes" in out
+        assert "# meridian" in out
 
     def test_top_level_commands_present(self):
         out = generate_zsh(_make_parser())

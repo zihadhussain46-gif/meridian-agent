@@ -1577,7 +1577,7 @@ def has_conflicting_systemd_units() -> bool:
 # Legacy service names from older Hermes installs that predate the
 # hermes-gateway rename. Kept as an explicit allowlist (NOT a glob) so
 # profile units (hermes-gateway-*.service) and unrelated third-party
-# "hermes" units are never matched.
+# "meridian" units are never matched.
 _LEGACY_SERVICE_NAMES: tuple[str, ...] = ("hermes.service",)
 
 # ExecStart content markers that identify a unit as running our gateway.
@@ -3125,7 +3125,7 @@ def _guard_official_docker_root_gateway() -> None:
         "Refusing to run the Hermes gateway as root inside the official Docker image."
     )
     print(
-        "  The image entrypoint normally drops privileges to the 'hermes' user. "
+        "  The image entrypoint normally drops privileges to the 'meridian' user. "
         "If you override entrypoint in Docker Compose, include "
         "/opt/hermes/docker/entrypoint.sh before the Hermes command."
     )

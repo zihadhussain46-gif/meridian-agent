@@ -15,7 +15,7 @@ Configuration in config.yaml::
             server: irc.libera.chat
             port: 6697
             nickname: hermes-bot
-            channel: "#hermes"
+            channel: "# meridian"
             use_tls: true
             server_password: ""       # optional server password
             nickserv_password: ""     # optional NickServ identification
@@ -591,7 +591,7 @@ def interactive_setup() -> None:
     save_env_value("IRC_NICKNAME", nickname.strip())
 
     channel = prompt(
-        "Channel to join (e.g. #hermes — comma-separate for multiple)",
+        "Channel to join (e.g. # meridian — comma-separate for multiple)",
         default=get_env_value("IRC_CHANNEL") or "",
     )
     if not channel:

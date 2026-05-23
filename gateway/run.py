@@ -15277,7 +15277,7 @@ class GatewayRunner:
             headers["X-Hermes-Session-Id"] = session_id
 
         body = {
-            "model": "hermes-agent",
+            "model": "meridian-agent",
             "messages": api_messages,
             "stream": True,
         }

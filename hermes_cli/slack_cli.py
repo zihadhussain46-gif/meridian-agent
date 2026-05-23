@@ -114,7 +114,7 @@ def slack_manifest_command(args) -> int:
       --slashes-only  Emit only the ``features.slash_commands`` array (for
                       merging into an existing manifest manually)
     """
-    name = getattr(args, "name", None) or "Hermes"
+    name = getattr(args, "name", None) or "Meridian"
     description = getattr(args, "description", None) or "Your Hermes agent on Slack"
 
     if getattr(args, "slashes_only", False):

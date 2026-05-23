@@ -96,7 +96,7 @@ def cmd_enable(args) -> None:
     """Enable Honcho for the active profile."""
     cfg = _read_config()
     host = _host_key()
-    label = f"[{host}] " if host != "hermes" else ""
+    label = f"[{host}] " if host != "meridian" else ""
     block = cfg.setdefault("hosts", {}).setdefault(host, {})
 
     if block.get("enabled") is True:
@@ -139,7 +139,7 @@ def cmd_disable(args) -> None:
     """Disable Honcho for the active profile."""
     cfg = _read_config()
     host = _host_key()
-    label = f"[{host}] " if host != "hermes" else ""
+    label = f"[{host}] " if host != "meridian" else ""
     block = cfg_get(cfg, "hosts", host, default={})
 
     if not block or block.get("enabled") is False:
@@ -425,12 +425,12 @@ def cmd_setup(args) -> None:
     if new_peer:
         hermes_host["peerName"] = new_peer
 
-    current_ai = hermes_host.get("aiPeer") or cfg.get("aiPeer", "hermes")
+    current_ai = hermes_host.get("aiPeer") or cfg.get("aiPeer", "meridian")
     new_ai = _prompt("AI peer name", default=current_ai)
     if new_ai:
         hermes_host["aiPeer"] = new_ai
 
-    current_workspace = hermes_host.get("workspace") or cfg.get("workspace", "hermes")
+    current_workspace = hermes_host.get("workspace") or cfg.get("workspace", "meridian")
     new_workspace = _prompt("Workspace ID", default=current_workspace)
     if new_workspace:
         hermes_host["workspace"] = new_workspace
@@ -864,7 +864,7 @@ def cmd_peer(args) -> None:
         return
 
     host = _host_key()
-    label = f"[{host}] " if host != "hermes" else ""
+    label = f"[{host}] " if host != "meridian" else ""
 
     if user_name is not None:
         cfg.setdefault("hosts", {}).setdefault(host, {})["peerName"] = user_name.strip()
@@ -917,7 +917,7 @@ def cmd_mode(args) -> None:
         return
 
     host = _host_key()
-    label = f"[{host}] " if host != "hermes" else ""
+    label = f"[{host}] " if host != "meridian" else ""
     cfg.setdefault("hosts", {}).setdefault(host, {})["recallMode"] = mode_arg
     _write_config(cfg)
     print(f"  {label}Recall mode -> {mode_arg}  ({MODES[mode_arg]})\n")
@@ -952,7 +952,7 @@ def cmd_strategy(args) -> None:
         return
 
     host = _host_key()
-    label = f"[{host}] " if host != "hermes" else ""
+    label = f"[{host}] " if host != "meridian" else ""
     cfg.setdefault("hosts", {}).setdefault(host, {})["sessionStrategy"] = strat_arg
     _write_config(cfg)
     print(f"  {label}Session strategy -> {strat_arg}  ({STRATEGIES[strat_arg]})\n")
@@ -986,7 +986,7 @@ def cmd_tokens(args) -> None:
         return
 
     host = _host_key()
-    label = f"[{host}] " if host != "hermes" else ""
+    label = f"[{host}] " if host != "meridian" else ""
     changed = False
     if context is not None:
         cfg.setdefault("hosts", {}).setdefault(host, {})["contextTokens"] = context
@@ -1167,7 +1167,7 @@ def cmd_migrate(args) -> None:
     if user_files:
         print(f"  Found: {', '.join(f.name for f in user_files)}")
         print()
-        print("  These are picked up automatically the first time you run 'hermes'")
+        print("  These are picked up automatically the first time you run 'meridian'")
         print("  with Honcho configured and no prior session history.")
         print("  (Hermes calls migrate_memory_files() on first session init.)")
         print()

@@ -98,7 +98,7 @@ def test_redact_is_recursive():
 
 def test_redact_preserves_non_secret_keys_and_values():
     mod = _load()
-    input_data = {"name": "hermes", "count": 42, "tags": ["a", "b"]}
+    input_data = {"name": "meridian", "count": 42, "tags": ["a", "b"]}
     out = mod.redact_migration_value(input_data)
     assert out == input_data
 

@@ -243,7 +243,7 @@ class TestArgparse:
             "hermes_cli.setup.run_setup_wizard",
             lambda args: captured.setdefault("args", args),
         )
-        monkeypatch.setattr(sys, "argv", ["hermes", "setup", "--reconfigure"])
+        monkeypatch.setattr(sys, "argv", ["meridian", "setup", "--reconfigure"])
         try:
             main()
         except SystemExit:
@@ -260,7 +260,7 @@ class TestArgparse:
             "hermes_cli.setup.run_setup_wizard",
             lambda args: captured.setdefault("args", args),
         )
-        monkeypatch.setattr(sys, "argv", ["hermes", "setup", "--quick"])
+        monkeypatch.setattr(sys, "argv", ["meridian", "setup", "--quick"])
         try:
             main()
         except SystemExit:
@@ -277,7 +277,7 @@ class TestArgparse:
             "hermes_cli.setup.run_setup_wizard",
             lambda args: captured.setdefault("args", args),
         )
-        monkeypatch.setattr(sys, "argv", ["hermes", "setup"])
+        monkeypatch.setattr(sys, "argv", ["meridian", "setup"])
         try:
             main()
         except SystemExit:

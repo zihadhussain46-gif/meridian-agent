@@ -8426,7 +8426,7 @@ def _ensure_fhs_path_guard() -> None:
 
     path_line = 'export PATH="/usr/local/bin:$PATH"'
     path_comment = (
-        "# Hermes Agent — ensure /usr/local/bin is on PATH " "(RHEL non-login shells)"
+        "# Meridian Agent — ensure /usr/local/bin is on PATH " "(RHEL non-login shells)"
     )
     wrote_any = False
     for candidate in (".bashrc", ".bash_profile"):
@@ -8593,9 +8593,9 @@ def _cmd_update_pip(args):
 
     uv = shutil.which("uv")
     if uv:
-        cmd = [uv, "pip", "install", "--upgrade", "hermes-agent"]
+        cmd = [uv, "pip", "install", "--upgrade", "meridian-agent"]
     else:
-        cmd = [sys.executable, "-m", "pip", "install", "--upgrade", "hermes-agent"]
+        cmd = [sys.executable, "-m", "pip", "install", "--upgrade", "meridian-agent"]
 
     print(f"→ Running: {' '.join(cmd)}")
     result = subprocess.run(cmd)
@@ -10234,7 +10234,7 @@ def cmd_profile(args):
             if wrapper_path:
                 # If custom name, write the profile name into the wrapper
                 if custom_name:
-                    wrapper_path.write_text(f'#!/bin/sh\nexec hermes -p {name} "$@"\n')
+                    wrapper_path.write_text(f'# meridian -p {name} "$@"\n')
                 print(f"✓ Alias created: {wrapper_path}")
                 if not _is_wrapper_dir_in_path():
                     print(f"⚠ {_get_wrapper_dir()} is not in your PATH.")
@@ -11454,7 +11454,7 @@ def main():
     slack_manifest.add_argument(
         "--name",
         default=None,
-        help='Bot display name (default: "Hermes")',
+        help='Bot display name (default: "Meridian")',
     )
     slack_manifest.add_argument(
         "--description",
