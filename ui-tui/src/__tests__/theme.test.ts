@@ -44,15 +44,15 @@ describe('DEFAULT_THEME', () => {
     const { DEFAULT_THEME } = await importThemeWithCleanEnv()
 
     expect(DEFAULT_THEME.brand.name).toBe('Meridian Agent')
-    expect(DEFAULT_THEME.brand.prompt).toBe('❯')
-    expect(DEFAULT_THEME.brand.tool).toBe('┊')
+    expect(DEFAULT_THEME.brand.prompt).toBe('◆')
+    expect(DEFAULT_THEME.brand.tool).toBe('◇')
   })
 
   it('has color palette', async () => {
     const { DEFAULT_THEME } = await importThemeWithCleanEnv()
 
-    expect(DEFAULT_THEME.color.primary).toBe('#FFD700')
-    expect(DEFAULT_THEME.color.error).toBe('#ef5350')
+    expect(DEFAULT_THEME.color.primary).toBe('#FF2DAA')
+    expect(DEFAULT_THEME.color.error).toBe('#FF5C8A')
   })
 })
 
@@ -60,10 +60,10 @@ describe('LIGHT_THEME', () => {
   it('avoids bright-yellow accents unreadable on white backgrounds (#11300)', async () => {
     const { LIGHT_THEME } = await importThemeWithCleanEnv()
 
-    expect(LIGHT_THEME.color.primary).not.toBe('#FFD700')
-    expect(LIGHT_THEME.color.accent).not.toBe('#FFBF00')
-    expect(LIGHT_THEME.color.muted).not.toBe('#B8860B')
-    expect(LIGHT_THEME.color.statusWarn).not.toBe('#FFD700')
+    expect(LIGHT_THEME.color.primary).not.toBe('#FF2DAA')
+    expect(LIGHT_THEME.color.accent).not.toBe('#FF77D8')
+    expect(LIGHT_THEME.color.muted).not.toBe('#B86A9B')
+    expect(LIGHT_THEME.color.statusWarn).not.toBe('#FF2DAA')
   })
 
   it('keeps the same shape as DARK_THEME', async () => {

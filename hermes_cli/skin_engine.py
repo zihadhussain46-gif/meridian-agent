@@ -17,25 +17,25 @@ All fields are optional. Missing values inherit from the ``default`` skin.
 
     # Colors: hex values for Rich markup (banner, UI, response box)
     colors:
-      banner_border: "#CD7F32"            # Panel border color
-      banner_title: "#FFD700"             # Panel title text color
-      banner_accent: "#FFBF00"            # Section headers (Available Tools, etc.)
-      banner_dim: "#B8860B"               # Dim/muted text (separators, labels)
-      banner_text: "#FFF8DC"              # Body text (tool names, skill names)
-      ui_accent: "#FFBF00"               # General UI accent
+      banner_border: "#B1126F"            # Panel border color
+      banner_title: "#FF2DAA"             # Panel title text color
+      banner_accent: "#FF77D8"            # Section headers (Available Tools, etc.)
+      banner_dim: "#B86A9B"               # Dim/muted text (separators, labels)
+      banner_text: "#FFE8F7"              # Body text (tool names, skill names)
+      ui_accent: "#FF77D8"               # General UI accent
       ui_label: "#DAA520"                # UI labels (warm gold; teal clashed w/ default banner gold)
       ui_ok: "#4caf50"                   # Success indicators
       ui_error: "#ef5350"                # Error indicators
       ui_warn: "#ffa726"                 # Warning indicators
-      prompt: "#FFF8DC"                  # Prompt text color
-      input_rule: "#CD7F32"              # Input area horizontal rule
-      response_border: "#FFD700"         # Response box border (ANSI)
+      prompt: "#FFE8F7"                  # Prompt text color
+      input_rule: "#B1126F"              # Input area horizontal rule
+      response_border: "#FF2DAA"         # Response box border (ANSI)
       status_bar_bg: "#1a1a2e"           # Status bar background
       status_bar_text: "#C0C0C0"         # Status bar default text
-      status_bar_strong: "#FFD700"       # Status bar highlighted text
+      status_bar_strong: "#FF2DAA"       # Status bar highlighted text
       status_bar_dim: "#8B8682"          # Status bar separators/muted text
       status_bar_good: "#8FBC8F"         # Healthy context usage
-      status_bar_warn: "#FFD700"         # Warning context usage
+      status_bar_warn: "#FF2DAA"         # Warning context usage
       status_bar_bad: "#FF8C00"          # High context usage
       status_bar_critical: "#FF6B6B"     # Critical context usage
       session_label: "#DAA520"           # Session label color
@@ -67,13 +67,13 @@ All fields are optional. Missing values inherit from the ``default`` skin.
     branding:
       agent_name: "Meridian Agent"          # Banner title, status display
       welcome: "Welcome message"          # Shown at CLI startup
-      goodbye: "Goodbye! ⚕"              # Shown on exit
-      response_label: " ⚕ Hermes "       # Response box header label
-      prompt_symbol: "❯"                 # Input prompt symbol (bare token; renderers add trailing space)
+      goodbye: "Meridian session closed."              # Shown on exit
+      response_label: " ◆ Meridian "       # Response box header label
+      prompt_symbol: "◆"                 # Input prompt symbol (bare token; renderers add trailing space)
       help_header: "(^_^)? Commands"      # /help header text
 
     # Tool prefix: character for tool output lines (default: ┊)
-    tool_prefix: "┊"
+    tool_prefix: "◇"
 
     # Tool emojis: override the default emoji for any tool (used in spinners & progress)
     tool_emojis:
@@ -89,7 +89,7 @@ USAGE
     from hermes_cli.skin_engine import get_active_skin, list_skins, set_active_skin
 
     skin = get_active_skin()
-    print(skin.colors["banner_title"])    # "#FFD700"
+    print(skin.colors["banner_title"])    # "#FF2DAA"
     print(skin.get_branding("agent_name"))  # "Meridian Agent"
 
     set_active_skin("ares")               # Switch to built-in ares skin
@@ -98,7 +98,7 @@ USAGE
 BUILT-IN SKINS
 ==============
 
-- ``default`` — Classic Hermes gold/kawaii (the current look)
+- ``default`` — Meridian magenta agency (the current look)
 - ``ares``    — Crimson/bronze war-god theme with custom spinner wings
 - ``mono``    — Clean grayscale monochrome
 - ``slate``   — Cool blue developer-focused theme
@@ -134,7 +134,7 @@ class SkinConfig:
     colors: Dict[str, str] = field(default_factory=dict)
     spinner: Dict[str, Any] = field(default_factory=dict)
     branding: Dict[str, str] = field(default_factory=dict)
-    tool_prefix: str = "┊"
+    tool_prefix: str = "◇"
     tool_emojis: Dict[str, str] = field(default_factory=dict)  # per-tool emoji overrides
     banner_logo: str = ""    # Rich-markup ASCII art logo (replaces HERMES_AGENT_LOGO)
     banner_hero: str = ""    # Rich-markup hero art (replaces HERMES_CADUCEUS)
@@ -164,37 +164,49 @@ class SkinConfig:
 _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
     "default": {
         "name": "default",
-        "description": "Classic Hermes — gold and kawaii",
+        "description": "Meridian — magenta agency skin",
         "colors": {
-            "banner_border": "#CD7F32",
-            "banner_title": "#FFD700",
-            "banner_accent": "#FFBF00",
-            "banner_dim": "#B8860B",
-            "banner_text": "#FFF8DC",
-            "ui_accent": "#FFBF00",
-            "ui_label": "#DAA520",
-            "ui_ok": "#4caf50",
-            "ui_error": "#ef5350",
-            "ui_warn": "#ffa726",
-            "prompt": "#FFF8DC",
-            "input_rule": "#CD7F32",
-            "response_border": "#FFD700",
-            "status_bar_bg": "#1a1a2e",
-            "session_label": "#DAA520",
-            "session_border": "#8B8682",
+            "banner_border": "#B1126F",
+            "banner_title": "#FF2DAA",
+            "banner_accent": "#FF77D8",
+            "banner_dim": "#B86A9B",
+            "banner_text": "#FFE8F7",
+            "ui_accent": "#FF77D8",
+            "ui_label": "#F7A3D7",
+            "ui_ok": "#54D6A1",
+            "ui_error": "#FF5C8A",
+            "ui_warn": "#FFB84D",
+            "prompt": "#FFE8F7",
+            "input_rule": "#B1126F",
+            "response_border": "#FF2DAA",
+            "status_bar_bg": "#17101A",
+            "status_bar_text": "#FFE8F7",
+            "status_bar_strong": "#FF2DAA",
+            "status_bar_dim": "#B86A9B",
+            "status_bar_good": "#54D6A1",
+            "status_bar_warn": "#FFB84D",
+            "status_bar_bad": "#FF7A45",
+            "status_bar_critical": "#FF5C8A",
+            "session_label": "#F7A3D7",
+            "session_border": "#B86A9B",
+            "selection_bg": "#4A1F3A",
+            "completion_menu_bg": "#17101A",
+            "completion_menu_current_bg": "#3A1730",
+            "completion_menu_meta_bg": "#17101A",
+            "completion_menu_meta_current_bg": "#3A1730",
         },
         "spinner": {
             # Empty = use hardcoded defaults in display.py
         },
         "branding": {
             "agent_name": "Meridian Agent",
-            "welcome": "Welcome to Meridian Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
-            "prompt_symbol": "❯",
-            "help_header": "(^_^)? Available Commands",
+            "welcome": "Welcome to Meridian Agent. Type your message or /help for commands.",
+            "goodbye": "Meridian session closed.",
+            "response_label": " ◆ Meridian ",
+            "prompt_symbol": "◆",
+            "help_header": "Meridian Commands",
         },
-        "tool_prefix": "┊",
+        "tool_prefix": "◇",
     },
     "ares": {
         "name": "ares",
@@ -300,8 +312,8 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         "branding": {
             "agent_name": "Meridian Agent",
             "welcome": "Welcome to Meridian Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "goodbye": "Meridian session closed.",
+            "response_label": " ◆ Meridian ",
             "prompt_symbol": "❯",
             "help_header": "[?] Available Commands",
         },
@@ -339,8 +351,8 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         "branding": {
             "agent_name": "Meridian Agent",
             "welcome": "Welcome to Meridian Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "goodbye": "Meridian session closed.",
+            "response_label": " ◆ Meridian ",
             "prompt_symbol": "❯",
             "help_header": "(^_^)? Available Commands",
         },
@@ -376,8 +388,8 @@ _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
         "branding": {
             "agent_name": "Meridian Agent",
             "welcome": "Welcome to Meridian Agent! Type your message or /help for commands.",
-            "goodbye": "Goodbye! ⚕",
-            "response_label": " ⚕ Hermes ",
+            "goodbye": "Meridian session closed.",
+            "response_label": " ◆ Meridian ",
             "prompt_symbol": "❯",
             "help_header": "[?] Available Commands",
         },
@@ -709,7 +721,7 @@ def _build_skin_config(data: Dict[str, Any]) -> SkinConfig:
         colors=colors,
         spinner=spinner,
         branding=branding,
-        tool_prefix=data.get("tool_prefix", default.get("tool_prefix", "┊")),
+        tool_prefix=data.get("tool_prefix", default.get("tool_prefix", "◇")),
         tool_emojis=emoji_overrides,
         banner_logo=data.get("banner_logo", ""),
         banner_hero=data.get("banner_hero", ""),
@@ -807,7 +819,7 @@ def init_skin_from_config(config: dict) -> None:
 # =============================================================================
 
 
-def get_active_prompt_symbol(fallback: str = "❯") -> str:
+def get_active_prompt_symbol(fallback: str = "◆") -> str:
     """Return the interactive prompt symbol with a single trailing space.
 
     Skins store ``prompt_symbol`` as a bare token (no spaces). The trailing
@@ -834,7 +846,7 @@ def get_active_help_header(fallback: str = "(^_^)? Available Commands") -> str:
 
 
 
-def get_active_goodbye(fallback: str = "Goodbye! ⚕") -> str:
+def get_active_goodbye(fallback: str = "Meridian session closed.") -> str:
     """Get the goodbye line from the active skin."""
     try:
         return get_active_skin().get_branding("goodbye", fallback)
@@ -859,9 +871,9 @@ def get_prompt_toolkit_style_overrides() -> Dict[str, str]:
     # color schemes).  Skins can opt into a colored prompt by setting
     # `prompt` explicitly in their YAML.
     prompt = skin.get_color("prompt", "")
-    input_rule = skin.get_color("input_rule", "#CD7F32")
-    title = skin.get_color("banner_title", "#FFD700")
-    text = skin.get_color("banner_text", "#FFF8DC")
+    input_rule = skin.get_color("input_rule", "#B1126F")
+    title = skin.get_color("banner_title", "#FF2DAA")
+    text = skin.get_color("banner_text", "#FFE8F7")
     dim = skin.get_color("banner_dim", "#555555")
     label = skin.get_color("ui_label", title)
     warn = skin.get_color("ui_warn", "#FF8C00")

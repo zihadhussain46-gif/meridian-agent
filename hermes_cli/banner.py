@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 # ANSI building blocks for conversation display
 # =========================================================================
 
-_GOLD = "\033[1;38;2;255;215;0m"  # True-color #FFD700 bold
+_GOLD = "\033[1;38;2;255;45;170m"  # True-color #FF2DAA bold
 _BOLD = "\033[1m"
 _DIM = "\033[2m"
 _RST = "\033[0m"
@@ -67,30 +67,24 @@ def _skin_branding(key: str, fallback: str) -> str:
 
 from hermes_cli import __version__ as VERSION, __release_date__ as RELEASE_DATE
 
-# Top banner - meridian globe braille art (6 lines, wide terminal)
-MERIDIAN_AGENT_LOGO = """⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤
-⠤⠀⠀⠀⠀⠀⠀⠀⠀⠦⠒⠒⠒⠒⠒⠒⠒⠒⠓⠒⠒⠒⠒⠒⠒⠒⠒⠦⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠤⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⠀⠀⠐⢷⣄⠀⠀⠀⠀⠀⠀⢰⣾⡇⠀⠀⠀⠀⠀⠀⢀⡴⠋
-⠤⠀⠀⠀⠀⠀⢀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⢀⣿⡇
-⠤⠀⠀⠀⠀⢀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⢸⣿⣿⡇⠀⠀⠀⠀⢀⣿⣿⡇
-⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"""
+# Top banner - Meridian wordmark (wide terminal)
+MERIDIAN_AGENT_LOGO = """[bold #FF2DAA]███╗   ███╗███████╗██████╗ ██╗██████╗ ██╗ █████╗ ███╗   ██╗[/]
+[bold #FF2DAA]████╗ ████║██╔════╝██╔══██╗██║██╔══██╗██║██╔══██╗████╗  ██║[/]
+[#FF77D8]██╔████╔██║█████╗  ██████╔╝██║██║  ██║██║███████║██╔██╗ ██║[/]
+[#FF77D8]██║╚██╔╝██║██╔══╝  ██╔══██╗██║██║  ██║██║██╔══██║██║╚██╗██║[/]
+[#B1126F]██║ ╚═╝ ██║███████╗██║  ██║██║██████╔╝██║██║  ██║██║ ╚████║[/]
+[#B1126F]╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝[/]"""
 
-# Left panel - meridian circle with vertical line (15 lines, left column)
-HERMES_CADUCEUS = """⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤
-⠤⠀⠀⠀⠀⠀⠀⠀⠀⠦⠒⠒⠒⠒⠒⠒⠒⠒⠓⠒⠒⠒⠒⠒⠒⠒⠒⠦⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠤⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⠀⠀⠐⢷⣄⠀⠀⠀⠀⠀⠀⢰⣾⡇⠀⠀⠀⠀⠀⠀⢀⡴⠋
-⠤⠀⠀⠀⠀⠀⢀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⢀⣿⡇
-⠤⠀⠀⠀⠀⢀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⢸⣿⣿⡇⠀⠀⠀⠀⢀⣿⣿⡇
-⠤⠀⠀⠀⢀⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⢦⣾⣿⣿⡇⠀⠀⠀⢀⣿⣿⣿⡇
-⠤⠀⠀⢀⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⡇⠀⠀⢀⣿⣿⣿⣿⡇
-⠤⠀⠀⣾⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⡇⠀⠀⣾⣿⣿⣿⣿⡇
-⠤⠀⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⡇⠀⠀⣿⣿⣿⣿⣿⡇
-⠤⠀⢰⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⡇⠀⢰⣿⣿⣿⣿⣿⡇
-⠤⠀⠘⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⡇⠀⠘⣿⣿⣿⣿⣿⡇
-⠤⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⡇⠀⠀⢸⣿⣿⣿⣿⡇
-⠤⠀⠀⠈⢿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⡇⠀⠀⠈⢿⣿⣿⣿⡇
-⠤⠀⠀⠀⠀⠙⠿⠿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠿⠿⠃⠀⠀⠀⠀⠙⠿⠿⠃
-⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"""
+# Left panel - Meridian signal mark
+HERMES_CADUCEUS = """[#B86A9B]              ✦[/]
+[#B1126F]          ╱   │   ╲[/]
+[#FF77D8]      ╱       │       ╲[/]
+[#FF2DAA]  ────╲───────◆───────╱────[/]
+[#FF77D8]      ╲       │       ╱[/]
+[#B1126F]          ╲   │   ╱[/]
+[#B86A9B]              ✦[/]
+[#FF2DAA]        MERIDIAN SIGNAL[/]
+[#FF77D8]      Brand systems online[/]"""
 
 
 
@@ -494,9 +488,9 @@ def build_welcome_banner(console: Console, model: str, cwd: str,
     layout_table.add_column("right", justify="left")
 
     # Resolve skin colors once for the entire banner
-    accent = _skin_color("banner_accent", "#FFBF00")
-    dim = _skin_color("banner_dim", "#B8860B")
-    text = _skin_color("banner_text", "#FFF8DC")
+    accent = _skin_color("banner_accent", "#FF77D8")
+    dim = _skin_color("banner_dim", "#B86A9B")
+    text = _skin_color("banner_text", "#FFE8F7")
     session_color = _skin_color("session_border", "#8B8682")
 
     # Use skin's custom caduceus art if provided
@@ -679,8 +673,8 @@ def build_welcome_banner(console: Console, model: str, cwd: str,
     right_content = "\n".join(right_lines)
     layout_table.add_row(left_content, right_content)
 
-    title_color = _skin_color("banner_title", "#FFD700")
-    border_color = _skin_color("banner_border", "#CD7F32")
+    title_color = _skin_color("banner_title", "#FF2DAA")
+    border_color = _skin_color("banner_border", "#B1126F")
     version_label = format_banner_version_label()
     release_info = get_latest_release_tag()
     if release_info:
