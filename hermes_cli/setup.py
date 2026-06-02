@@ -1,5 +1,5 @@
 """
-Interactive setup wizard for Hermes Agent.
+Interactive setup wizard for Meridian Agent.
 
 Modular wizard with independently-runnable sections:
   1. Model & Provider — choose your AI provider and model
@@ -177,19 +177,19 @@ def is_interactive_stdin() -> bool:
 def print_noninteractive_setup_guidance(reason: str | None = None) -> None:
     """Print guidance for headless/non-interactive setup flows."""
     print()
-    print(color("⚕ Hermes Setup — Non-interactive mode", Colors.CYAN, Colors.BOLD))
+    print(color("⚕ Meridian Setup — Non-interactive mode", Colors.CYAN, Colors.BOLD))
     print()
     if reason:
         print_info(reason)
     print_info("The interactive wizard cannot be used here.")
     print()
-    print_info("Configure Hermes using environment variables or config commands:")
-    print_info("  hermes config set model.provider custom")
-    print_info("  hermes config set model.base_url http://localhost:8080/v1")
-    print_info("  hermes config set model.default your-model-name")
+    print_info("Configure Meridian using environment variables or config commands:")
+    print_info("  meridian config set model.provider custom")
+    print_info("  meridian config set model.base_url http://localhost:8080/v1")
+    print_info("  meridian config set model.default your-model-name")
     print()
     print_info("Or set OPENROUTER_API_KEY / OPENAI_API_KEY in your environment.")
-    print_info("Run 'hermes setup' in an interactive terminal to use the full wizard.")
+    print_info("Run 'meridian setup' in an interactive terminal to use the full wizard.")
     print()
 
 
@@ -353,7 +353,7 @@ def _prompt_api_key(var: dict):
         save_env_value(var["name"], value)
         print_success("  ✓ Saved")
     else:
-        print_warning("  Skipped (configure later with 'hermes setup')")
+        print_warning("  Skipped (configure later with 'meridian setup')")
 
 
 def _print_setup_summary(config: dict, hermes_home):
@@ -376,7 +376,7 @@ def _print_setup_summary(config: dict, hermes_home):
     if _vision_backends:
         tool_status.append(("Vision (image analysis)", True, None))
     else:
-        tool_status.append(("Vision (image analysis)", False, "run 'hermes setup' to configure"))
+        tool_status.append(("Vision (image analysis)", False, "run 'meridian setup' to configure"))
 
     # Mixture of Agents — requires OpenRouter specifically (calls multiple models)
     if get_env_value("OPENROUTER_API_KEY"):
@@ -498,7 +498,7 @@ def _print_setup_summary(config: dict, hermes_home):
         if neutts_ok:
             tool_status.append(("Text-to-Speech (NeuTTS local)", True, None))
         else:
-            tool_status.append(("Text-to-Speech (NeuTTS — not installed)", False, "run 'hermes setup tts'"))
+            tool_status.append(("Text-to-Speech (NeuTTS — not installed)", False, "run 'meridian setup tts'"))
     elif tts_provider == "kittentts":
         try:
             import importlib.util
@@ -508,7 +508,7 @@ def _print_setup_summary(config: dict, hermes_home):
         if kittentts_ok:
             tool_status.append(("Text-to-Speech (KittenTTS local)", True, None))
         else:
-            tool_status.append(("Text-to-Speech (KittenTTS — not installed)", False, "run 'hermes setup tts'"))
+            tool_status.append(("Text-to-Speech (KittenTTS — not installed)", False, "run 'meridian setup tts'"))
     else:
         tool_status.append(("Text-to-Speech (Edge TTS)", True, None))
 
@@ -518,7 +518,7 @@ def _print_setup_summary(config: dict, hermes_home):
         if subscription_features.modal.direct_override:
             tool_status.append(("Modal Execution (direct Modal)", True, None))
         else:
-            tool_status.append(("Modal Execution", False, "run 'hermes setup terminal'"))
+            tool_status.append(("Modal Execution", False, "run 'meridian setup terminal'"))
     elif managed_nous_tools_enabled() and subscription_features.nous_auth_present:
         tool_status.append(("Modal Execution (optional via Nous subscription)", True, None))
 
@@ -570,7 +570,7 @@ def _print_setup_summary(config: dict, hermes_home):
     disabled_tools = [(name, var) for name, avail, var in tool_status if not avail]
     if disabled_tools:
         print_warning(
-            "Some tools are disabled. Run 'hermes setup tools' to configure them,"
+            "Some tools are disabled. Run 'meridian setup tools' to configure them,"
         )
         from hermes_constants import display_hermes_home as _dhh
         print_warning(f"or edit {_dhh()}/.env directly to add the missing API keys.")
@@ -610,17 +610,17 @@ def _print_setup_summary(config: dict, hermes_home):
     print()
     print(color("📝 To edit your configuration:", Colors.CYAN, Colors.BOLD))
     print()
-    print(f"   {color('hermes setup', Colors.GREEN)}          Re-run the full wizard")
-    print(f"   {color('hermes setup model', Colors.GREEN)}    Change model/provider")
-    print(f"   {color('hermes setup terminal', Colors.GREEN)} Change terminal backend")
-    print(f"   {color('hermes setup gateway', Colors.GREEN)}  Configure messaging")
-    print(f"   {color('hermes setup tools', Colors.GREEN)}    Configure tool providers")
+    print(f"   {color('meridian setup', Colors.GREEN)}          Re-run the full wizard")
+    print(f"   {color('meridian setup model', Colors.GREEN)}    Change model/provider")
+    print(f"   {color('meridian setup terminal', Colors.GREEN)} Change terminal backend")
+    print(f"   {color('meridian setup gateway', Colors.GREEN)}  Configure messaging")
+    print(f"   {color('meridian setup tools', Colors.GREEN)}    Configure tool providers")
     print()
-    print(f"   {color('hermes config', Colors.GREEN)}         View current settings")
+    print(f"   {color('meridian config', Colors.GREEN)}         View current settings")
     print(
-        f"   {color('hermes config edit', Colors.GREEN)}    Open config in your editor"
+        f"   {color('meridian config edit', Colors.GREEN)}    Open config in your editor"
     )
-    print(f"   {color('hermes config set <key> <value>', Colors.GREEN)}")
+    print(f"   {color('meridian config set <key> <value>', Colors.GREEN)}")
     print("                          Set a specific value")
     print()
     print("   Or edit the files directly:")
@@ -633,8 +633,8 @@ def _print_setup_summary(config: dict, hermes_home):
     print(color("🚀 Ready to go!", Colors.CYAN, Colors.BOLD))
     print()
     print(f"   {color('meridian', Colors.GREEN)}              Start chatting")
-    print(f"   {color('hermes gateway', Colors.GREEN)}      Start messaging gateway")
-    print(f"   {color('hermes doctor', Colors.GREEN)}       Check for issues")
+    print(f"   {color('meridian gateway', Colors.GREEN)}      Start messaging gateway")
+    print(f"   {color('meridian doctor', Colors.GREEN)}       Check for issues")
     print()
 
 
@@ -815,7 +815,7 @@ def setup_model_provider(config: dict, *, quick: bool = False):
     except Exception as exc:
         logger.debug("select_provider_and_model error during setup: %s", exc)
         print_warning(f"Provider setup encountered an error: {exc}")
-        print_info("You can try again later with: hermes model")
+        print_info("You can try again later with: meridian model")
 
     # Re-sync the wizard's config dict from what cmd_model saved to disk.
     # This is critical: cmd_model writes to disk via its own load/save cycle,
@@ -995,7 +995,7 @@ def setup_model_provider(config: dict, *, quick: bool = False):
             else:
                 print_info("Skipped — vision won't be available")
         else:
-            print_info("Skipped — add later with 'hermes setup' or configure AUXILIARY_VISION_* settings")
+            print_info("Skipped — add later with 'meridian setup' or configure AUXILIARY_VISION_* settings")
 
 
     # Tool Gateway prompt is already shown by _model_flow_nous() above.
@@ -1295,7 +1295,7 @@ def _setup_tts_provider(config: dict):
                     from hermes_constants import display_hermes_home as _dhh
                     print_warning(
                         "No xAI API key provided for TTS. Configure XAI_API_KEY "
-                        f"via hermes setup model or {_dhh()}/.env to use xAI TTS. "
+                        f"via meridian setup model or {_dhh()}/.env to use xAI TTS. "
                         "Falling back to Edge TTS."
                     )
                     selected = "edge"
@@ -1662,7 +1662,7 @@ def setup_terminal_backend(config: dict):
     elif selected_backend == "vercel_sandbox":
         print_success("Terminal backend: Vercel Sandbox")
         print_info("Cloud microVM sandboxes with snapshot-backed filesystem persistence.")
-        print_info("Requires the optional SDK: pip install 'hermes-agent[vercel]'")
+        print_info("Requires the optional SDK: pip install 'meridian-agent[vercel]'")
 
         try:
             __import__("vercel")
@@ -1686,7 +1686,7 @@ def setup_terminal_backend(config: dict):
             if result.returncode == 0:
                 print_success("vercel SDK installed")
             else:
-                print_warning("Install failed — run manually: pip install 'hermes-agent[vercel]'")
+                print_warning("Install failed — run manually: pip install 'meridian-agent[vercel]'")
                 if result.stderr:
                     print_info(f"  Error: {result.stderr.strip().splitlines()[-1]}")
 
@@ -1783,7 +1783,7 @@ def _apply_default_agent_settings(config: dict):
     print_info("  Tool progress: all")
     print_info("  Compression threshold: 0.50")
     print_info("  Session reset: inactivity (1440 min) + daily (4:00)")
-    print_info("  Run `hermes setup agent` later to customize.")
+    print_info("  Run `meridian setup agent` later to customize.")
 
 
 def setup_agent_settings(config: dict):
@@ -2141,7 +2141,7 @@ def _write_slack_manifest_and_instruct():
         print_warning(f"Couldn't write Slack manifest: {exc}")
         print_info(
             "   You can generate it manually later with: "
-            "hermes slack manifest --write"
+            "meridian slack manifest --write"
         )
 
 
@@ -3281,7 +3281,7 @@ def run_setup_wizard(args):
     )
     print(
         color(
-            "│             ⚕ Hermes Agent Setup Wizard                │", Colors.MAGENTA
+            "│            ⚕ Meridian Agent Setup Wizard               │", Colors.MAGENTA
         )
     )
     print(
@@ -3292,7 +3292,7 @@ def run_setup_wizard(args):
     )
     print(
         color(
-            "│  Let's configure your Hermes Agent installation.       │", Colors.MAGENTA
+            "│  Let's configure your Meridian Agent installation.     │", Colors.MAGENTA
         )
     )
     print(

@@ -1,14 +1,14 @@
-"""``hermes debug`` debug tools for Hermes Agent.
+"""``meridian debug`` debug tools for Meridian Agent.
 
 Currently supports:
-    hermes debug share    Upload debug report (system info + logs) to a
-                          paste service and print a shareable URL.
-                          By default, log content is run through
-                          ``agent.redact.redact_sensitive_text`` with
-                          ``force=True`` before upload so credentials in
-                          ``~/.hermes/logs/*.log`` are not leaked into
-                          the public paste service. Pass ``--no-redact``
-                          to disable.
+    meridian debug share    Upload debug report (system info + logs) to a
+                            paste service and print a shareable URL.
+                            By default, log content is run through
+                            ``agent.redact.redact_sensitive_text`` with
+                            ``force=True`` before upload so credentials in
+                            ``~/.hermes/logs/*.log`` are not leaked into
+                            the public paste service. Pass ``--no-redact``
+                            to disable.
 """
 
 import io
@@ -257,7 +257,7 @@ def _delete_hint(url: str) -> str:
     """Return a one-liner delete command for the given paste URL."""
     paste_id = _extract_paste_id(url)
     if paste_id:
-        return f"hermes debug delete {url}"
+        return f"meridian debug delete {url}"
     # dpaste.com — no API delete, expires on its own.
     return "(auto-expires per dpaste.com policy)"
 
@@ -604,7 +604,7 @@ def run_debug_share(args):
 
     if redact:
         logger.info(
-            "hermes debug share: applied force-mode redaction to log snapshots before upload"
+            "meridian debug share: applied force-mode redaction to log snapshots before upload"
         )
 
     report = collect_debug_report(

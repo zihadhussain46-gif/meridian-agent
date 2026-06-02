@@ -1,11 +1,11 @@
-"""hermes hooks — inspect and manage shell-script hooks.
+"""meridian hooks — inspect and manage shell-script hooks.
 
 Usage::
 
-    hermes hooks list
-    hermes hooks test <event> [--for-tool X] [--payload-file F]
-    hermes hooks revoke <command>
-    hermes hooks doctor
+    meridian hooks list
+    meridian hooks test <event> [--for-tool X] [--payload-file F]
+    meridian hooks revoke <command>
+    meridian hooks doctor
 
 Consent records live under ``~/.hermes/shell-hooks-allowlist.json`` and
 hook definitions come from the ``hooks:`` block in ``~/.hermes/config.yaml``
@@ -24,12 +24,12 @@ from typing import Any, Dict, List
 
 
 def hooks_command(args) -> None:
-    """Entry point for ``hermes hooks`` — dispatches to the requested action."""
+    """Entry point for ``meridian hooks`` — dispatches to the requested action."""
     sub = getattr(args, "hooks_action", None)
 
     if not sub:
-        print("Usage: hermes hooks {list|test|revoke|doctor}")
-        print("Run 'hermes hooks --help' for details.")
+        print("Usage: meridian hooks {list|test|revoke|doctor}")
+        print("Run 'meridian hooks --help' for details.")
         return
 
     if sub in {"list", "ls"}:

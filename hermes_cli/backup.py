@@ -1,10 +1,10 @@
 """
-Backup and import commands for hermes CLI.
+Backup and import commands for meridian CLI.
 
-`hermes backup` creates a zip archive of the entire ~/.hermes/ directory
-(excluding the hermes-agent repo and transient files).
+`meridian backup` creates a zip archive of the entire ~/.hermes/ directory
+(excluding the meridian-agent repo and transient files).
 
-`hermes import` restores from a backup zip, overlaying onto the current
+`meridian import` restores from a backup zip, overlaying onto the current
 HERMES_HOME root.
 """
 
@@ -246,7 +246,7 @@ def run_backup(args) -> None:
         if len(errors) > 10:
             print(f"  ... and {len(errors) - 10} more")
 
-    print(f"\nRestore with: hermes import {out_path.name}")
+    print(f"\nRestore with: meridian import {out_path.name}")
 
 
 # ---------------------------------------------------------------------------
@@ -305,7 +305,7 @@ def _detect_prefix(zf: zipfile.ZipFile) -> str:
 
 
 def run_import(args) -> None:
-    """Restore a Hermes backup from a zip file."""
+    """Restore a Meridian backup from a zip file."""
     zip_path = Path(args.zipfile).expanduser().resolve()
 
     if not zip_path.is_file():
@@ -341,7 +341,7 @@ def run_import(args) -> None:
 
         if (has_config or has_env) and not args.force:
             print()
-            print("Warning: Target directory already has Hermes configuration.")
+            print("Warning: Target directory already has Meridian configuration.")
             print("Importing will overwrite existing files with backup contents.")
             print()
             try:
@@ -446,21 +446,21 @@ def run_import(args) -> None:
                 # hermes_cli.profiles might not be available (fresh install)
                 if any(profiles_dir.iterdir()):
                     print(f"\n  Profiles detected but aliases could not be created.")
-                    print(f"  Run: hermes profile list  (after installing hermes)")
+                    print(f"  Run: meridian profile list  (after installing meridian)")
 
         # Guidance
         print()
         if not (hermes_root / "hermes-agent").is_dir():
-            print("Note: The hermes-agent codebase was not included in the backup.")
-            print("  If this is a fresh install, run: hermes update")
+            print("Note: The meridian-agent codebase was not included in the backup.")
+            print("  If this is a fresh install, run: meridian update")
 
         if restored_profiles:
             gw_profiles = [n for n, _ in restored_profiles]
             print("\nTo re-enable gateway services for profiles:")
             for pname in gw_profiles:
-                print(f"  hermes -p {pname} gateway install")
+                print(f"  meridian -p {pname} gateway install")
 
-        print("Done. Your Hermes configuration has been restored.")
+        print("Done. Your Meridian configuration has been restored.")
 
 
 # ---------------------------------------------------------------------------
@@ -689,7 +689,7 @@ def prune_quick_snapshots(
 
 
 def run_quick_backup(args) -> None:
-    """CLI entry point for hermes backup --quick."""
+    """CLI entry point for meridian backup --quick."""
     label = getattr(args, "label", None)
     snap_id = create_quick_snapshot(label=label)
     if snap_id:

@@ -1,4 +1,4 @@
-"""CLI subcommand: `hermes curator <subcommand>`.
+"""CLI subcommand: `meridian curator <subcommand>`.
 
 Thin shell around agent/curator.py and tools/skill_usage.py. Renders a status
 table, triggers a run, pauses/resumes, and pins/unpins skills.
@@ -584,7 +584,7 @@ def register_cli(parent: argparse.ArgumentParser) -> None:
 
 def cli_main(argv=None) -> int:
     """Standalone entry (also usable by hermes_cli.main fallthrough)."""
-    parser = argparse.ArgumentParser(prog="hermes curator")
+    parser = argparse.ArgumentParser(prog="meridian curator")
     register_cli(parser)
     args = parser.parse_args(argv)
     fn = getattr(args, "func", None)

@@ -1,15 +1,15 @@
 """
-Configuration management for Hermes Agent.
+Configuration management for Meridian Agent.
 
 Config files are stored in ~/.hermes/ for easy access:
 - ~/.hermes/config.yaml  - All settings (model, toolsets, terminal, etc.)
 - ~/.hermes/.env         - API keys and secrets
 
 This module provides:
-- hermes config          - Show current configuration
-- hermes config edit     - Open config in editor
-- hermes config set      - Set a specific value
-- hermes config wizard   - Re-run setup wizard
+- meridian config          - Show current configuration
+- meridian config edit     - Open config in editor
+- meridian config set      - Set a specific value
+- meridian config wizard   - Re-run setup wizard
 """
 
 import copy
@@ -44,7 +44,7 @@ def _warn_config_parse_failure(config_path: Path, exc: Exception) -> None:
     scrolled off-screen on the first invocation and was never seen again.
 
     Now: warn once per (path, mtime_ns, size) on stderr **and** in
-    ``agent.log`` / ``errors.log`` at WARNING level so ``hermes logs``
+    ``agent.log`` / ``errors.log`` at WARNING level so ``meridian logs``
     surfaces it. Re-warns automatically if the file changes (different
     mtime/size), so users editing the config see the next failure.
     """
@@ -65,7 +65,7 @@ def _warn_config_parse_failure(config_path: Path, exc: Exception) -> None:
     )
     logger.warning(msg)
     try:
-        sys.stderr.write(f"⚠️  hermes config: {msg}\n")
+        sys.stderr.write(f"⚠️  meridian config: {msg}\n")
         sys.stderr.flush()
     except Exception:
         pass
@@ -255,7 +255,7 @@ def recommended_update_command_for_method(method: str) -> str:
         if uv:
             return "uv pip install --upgrade hermes-agent"
         return "pip install --upgrade hermes-agent"
-    return "hermes update"
+    return "meridian update"
 
 
 def recommended_update_command() -> str:

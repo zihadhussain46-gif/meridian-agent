@@ -2070,10 +2070,10 @@ def _cmd_daemon(args: argparse.Namespace) -> int:
     # casually — intentional.
     if not getattr(args, "force", False):
         print(
-            "hermes kanban daemon: DEPRECATED — the dispatcher now runs\n"
+            "meridian kanban daemon: DEPRECATED — the dispatcher now runs\n"
             "inside the gateway. To use kanban:\n"
             "\n"
-            "    hermes gateway start       # starts the gateway + embedded dispatcher\n"
+            "    meridian gateway start       # starts the gateway + embedded dispatcher\n"
             "\n"
             "Ready tasks will be picked up on the next dispatcher tick\n"
             "(default: every 60 seconds). Configure via config.yaml:\n"

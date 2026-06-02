@@ -1,7 +1,7 @@
 """
-MCP Server Management CLI — ``hermes mcp`` subcommand.
+MCP Server Management CLI — ``meridian mcp`` subcommand.
 
-Implements ``hermes mcp add/remove/list/test/configure`` for interactive
+Implements ``meridian mcp add/remove/list/test/configure`` for interactive
 MCP server lifecycle management (issue #690 Phase 2).
 
 Relies on tools/mcp_tool.py for connection/discovery and keeps
@@ -259,9 +259,9 @@ def cmd_mcp_add(args):
     if not url and not command:
         _error("Must specify --url <endpoint>, --command <cmd>, or --preset <name>")
         _info("Examples:")
-        _info('  hermes mcp add ink --url "https://mcp.ml.ink/mcp"')
-        _info('  hermes mcp add github --command npx --args @modelcontextprotocol/server-github')
-        _info('  hermes mcp add myserver --preset mypreset')
+        _info('  meridian mcp add ink --url "https://mcp.ml.ink/mcp"')
+        _info('  meridian mcp add github --command npx --args @modelcontextprotocol/server-github')
+        _info('  meridian mcp add myserver --preset mypreset')
         return
 
     # Check if server already exists
@@ -346,7 +346,7 @@ def cmd_mcp_add(args):
             server_config["enabled"] = False
             _save_mcp_server(name, server_config)
             _success(f"Saved '{name}' to config (disabled)")
-            _info("Fix the issue, then: hermes mcp test " + name)
+            _info("Fix the issue, then: meridian mcp test " + name)
         return
 
     if not tools:
@@ -768,13 +768,13 @@ def mcp_command(args):
         # No subcommand — show list
         cmd_mcp_list()
         print(color("  Commands:", Colors.CYAN))
-        _info("hermes mcp serve                              Run as MCP server")
-        _info("hermes mcp add <name> --url <endpoint>        Add an MCP server")
-        _info("hermes mcp add <name> --command <cmd>         Add a stdio server")
-        _info("hermes mcp add <name> --preset <preset>       Add from a known preset")
-        _info("hermes mcp remove <name>                      Remove a server")
-        _info("hermes mcp list                               List servers")
-        _info("hermes mcp test <name>                        Test connection")
-        _info("hermes mcp configure <name>                   Toggle tools")
-        _info("hermes mcp login <name>                       Re-authenticate OAuth")
+        _info("meridian mcp serve                              Run as MCP server")
+        _info("meridian mcp add <name> --url <endpoint>        Add an MCP server")
+        _info("meridian mcp add <name> --command <cmd>         Add a stdio server")
+        _info("meridian mcp add <name> --preset <preset>       Add from a known preset")
+        _info("meridian mcp remove <name>                      Remove a server")
+        _info("meridian mcp list                               List servers")
+        _info("meridian mcp test <name>                        Test connection")
+        _info("meridian mcp configure <name>                   Toggle tools")
+        _info("meridian mcp login <name>                       Re-authenticate OAuth")
         print()

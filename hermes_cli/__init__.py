@@ -1,14 +1,14 @@
 """
-Hermes CLI - Unified command-line interface for Hermes Agent.
+Meridian CLI - Unified command-line interface for Meridian Agent.
 
 Provides subcommands for:
-- hermes chat          - Interactive chat (same as ./hermes)
-- hermes gateway       - Run gateway in foreground
-- hermes gateway start - Start gateway service
-- hermes gateway stop  - Stop gateway service
-- hermes setup         - Interactive setup wizard
-- hermes status        - Show status of all components
-- hermes cron          - Manage cron jobs
+- meridian chat          - Interactive chat (same as ./meridian)
+- meridian gateway       - Run gateway in foreground
+- meridian gateway start - Start gateway service
+- meridian gateway stop  - Stop gateway service
+- meridian setup         - Interactive setup wizard
+- meridian status        - Show status of all components
+- meridian cron          - Manage cron jobs
 """
 
 import os

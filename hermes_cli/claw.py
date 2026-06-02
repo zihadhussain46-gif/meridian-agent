@@ -1,13 +1,13 @@
-"""hermes claw — OpenClaw migration commands.
+"""meridian claw — OpenClaw migration commands.
 
 Usage:
-    hermes claw migrate              # Preview then migrate (always shows preview first)
-    hermes claw migrate --dry-run    # Preview only, no changes
-    hermes claw migrate --yes        # Skip confirmation prompt
-    hermes claw migrate --preset full --overwrite --migrate-secrets  # Full run w/ secrets
-    hermes claw migrate --no-backup  # Skip pre-migration snapshot
-    hermes claw cleanup              # Archive leftover OpenClaw directories
-    hermes claw cleanup --dry-run    # Preview what would be archived
+    meridian claw migrate              # Preview then migrate (always shows preview first)
+    meridian claw migrate --dry-run    # Preview only, no changes
+    meridian claw migrate --yes        # Skip confirmation prompt
+    meridian claw migrate --preset full --overwrite --migrate-secrets  # Full run w/ secrets
+    meridian claw migrate --no-backup  # Skip pre-migration snapshot
+    meridian claw cleanup              # Archive leftover OpenClaw directories
+    meridian claw cleanup --dry-run    # Preview what would be archived
 """
 
 import importlib.util
