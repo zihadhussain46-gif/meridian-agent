@@ -9,7 +9,7 @@
   "license": "MIT",
   "distribution": {
     "uvx": {
-      "package": "hermes-agent[acp]==0.14.0",
+      "package": "hermes-agent[acp]==0.15.1",
       "args": ["hermes-acp"]
     }
   }

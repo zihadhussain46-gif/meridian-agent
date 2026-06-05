@@ -22,7 +22,7 @@ Use any model you want — [Nous Portal](https://portal.nousresearch.com), [Open
 <tr><td><b>A closed learning loop</b></td><td>Agent-curated memory with periodic nudges. Autonomous skill creation after complex tasks. Skills self-improve during use. FTS5 session search with LLM summarization for cross-session recall. <a href="https://github.com/plastic-labs/honcho">Honcho</a> dialectic user modeling. Compatible with the <a href="https://agentskills.io">agentskills.io</a> open standard.</td></tr>
 <tr><td><b>Scheduled automations</b></td><td>Built-in cron scheduler with delivery to any platform. Daily reports, nightly backups, weekly audits — all in natural language, running unattended.</td></tr>
 <tr><td><b>Delegates and parallelizes</b></td><td>Spawn isolated subagents for parallel workstreams. Write Python scripts that call tools via RPC, collapsing multi-step pipelines into zero-context-cost turns.</td></tr>
-<tr><td><b>Runs anywhere, not just your laptop</b></td><td>Seven terminal backends — local, Docker, SSH, Singularity, Modal, Daytona, and Vercel Sandbox. Daytona and Modal offer serverless persistence — your agent's environment hibernates when idle and wakes on demand, costing nearly nothing between sessions. Run it on a $5 VPS or a GPU cluster.</td></tr>
+<tr><td><b>Runs anywhere, not just your laptop</b></td><td>Six terminal backends — local, Docker, SSH, Singularity, Modal, and Daytona. Daytona and Modal offer serverless persistence — your agent's environment hibernates when idle and wakes on demand, costing nearly nothing between sessions. Run it on a $5 VPS or a GPU cluster.</td></tr>
 <tr><td><b>Research-ready</b></td><td>Batch trajectory generation, trajectory compression for training the next generation of tool-calling models.</td></tr>
 </table>
 
@@ -36,7 +36,7 @@ Use any model you want — [Nous Portal](https://portal.nousresearch.com), [Open
 curl -fsSL https://raw.githubusercontent.com/hermes-agent/hermes-agent/main/scripts/install.sh | bash
 ```
 
-### Windows (native, PowerShell) — Early Beta
+### Windows (native, PowerShell)
 
 > **Heads up:** Native Windows support is **early beta**. It installs and runs, but hasn't been road-tested as broadly as our Linux/macOS/WSL2 paths. Please [file issues](https://github.com/hermes-agent/hermes-agent/issues) when you hit rough edges. For the most battle-tested Windows setup today, run the Linux/macOS one-liner above inside **WSL2**.
 
@@ -48,7 +48,7 @@ iex (irm https://raw.githubusercontent.com/hermes-agent/hermes-agent/main/script
 
 The installer handles everything: uv, Python 3.11, Node.js, ripgrep, ffmpeg, **and a portable Git Bash** (MinGit, unpacked to `%LOCALAPPDATA%\hermes\git` — no admin required, completely isolated from any system Git install).  Meridian uses this bundled Git Bash to run shell commands.
 
-If you already have Git installed, the installer detects it and uses that instead.  Otherwise a ~45MB MinGit download is all you need — it won't touch or interfere with any system Git.
+If you already have Git installed, the installer detects it and uses that instead. Otherwise a ~45MB MinGit download is all you need — it won't touch or interfere with any system Git.
 
 > **Android / Termux:** The tested manual path is documented in the [Termux guide](https://meridian-agent.nousresearch.com/docs/getting-started/termux). On Termux, Meridian installs a curated `.[termux]` extra because the full `.[all]` extra currently pulls Android-incompatible voice dependencies.
 >
@@ -160,6 +160,7 @@ meridian claw migrate --overwrite  # Overwrite existing conflicts
 ```
 
 What gets imported:
+
 - **SOUL.md** — persona file
 - **Memories** — MEMORY.md and USER.md entries
 - **Skills** — user-created skills → `~/.hermes/skills/openclaw-imports/`

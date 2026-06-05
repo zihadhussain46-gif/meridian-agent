@@ -24,7 +24,7 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh-Hans', 'ko'],
+    locales: ['en', 'zh-Hans'],
     localeConfigs: {
       en: {
         label: 'English',
@@ -32,10 +32,6 @@ const config: Config = {
       'zh-Hans': {
         label: '简体中文',
         htmlLang: 'zh-Hans',
-      },
-      ko: {
-        label: '한국어',
-        htmlLang: 'ko',
       },
     },
   },
@@ -115,6 +111,11 @@ const config: Config = {
         {
           to: '/skills',
           label: 'Skills',
+          position: 'left',
+        },
+        {
+          href: 'https://hermes-agent.nousresearch.com/desktop',
+          label: 'Download',
           position: 'left',
         },
         {

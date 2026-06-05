@@ -291,7 +291,7 @@ Users can also change this per-session with the `/verbose` command in chat.
 
 Customize how the bot communicates by editing `~/.hermes/SOUL.md`:
 
-For a full guide, see [Use SOUL.md with Hermes](/docs/guides/use-soul-with-hermes).
+For a full guide, see [Use SOUL.md with Hermes](/guides/use-soul-with-hermes).
 
 ```markdown
 # Soul
@@ -428,13 +428,13 @@ hermes gateway stop && hermes gateway start
 
 You've got a working team Telegram assistant. Here are some next steps:
 
-- **[Security Guide](/docs/user-guide/security)** — deep dive into authorization, container isolation, and command approval
-- **[Messaging Gateway](/docs/user-guide/messaging)** — full reference for gateway architecture, session management, and chat commands
-- **[Telegram Setup](/docs/user-guide/messaging/telegram)** — platform-specific details including voice messages and TTS
-- **[Scheduled Tasks](/docs/user-guide/features/cron)** — advanced cron scheduling with delivery options and cron expressions
-- **[Context Files](/docs/user-guide/features/context-files)** — AGENTS.md, SOUL.md, and .cursorrules for project knowledge
-- **[Personality](/docs/user-guide/features/personality)** — built-in personality presets and custom persona definitions
-- **Add more platforms** — the same gateway can simultaneously run [Discord](/docs/user-guide/messaging/discord), [Slack](/docs/user-guide/messaging/slack), and [WhatsApp](/docs/user-guide/messaging/whatsapp)
+- **[Security Guide](/user-guide/security)** — deep dive into authorization, container isolation, and command approval
+- **[Messaging Gateway](/user-guide/messaging)** — full reference for gateway architecture, session management, and chat commands
+- **[Telegram Setup](/user-guide/messaging/telegram)** — platform-specific details including voice messages and TTS
+- **[Scheduled Tasks](/user-guide/features/cron)** — advanced cron scheduling with delivery options and cron expressions
+- **[Context Files](/user-guide/features/context-files)** — AGENTS.md, SOUL.md, and .cursorrules for project knowledge
+- **[Personality](/user-guide/features/personality)** — built-in personality presets and custom persona definitions
+- **Add more platforms** — the same gateway can simultaneously run [Discord](/user-guide/messaging/discord), [Slack](/user-guide/messaging/slack), and [WhatsApp](/user-guide/messaging/whatsapp)
 
 ---
 

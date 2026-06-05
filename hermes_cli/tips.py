@@ -227,6 +227,9 @@ TIPS = [
     "browser_vision with annotate=true overlays numbered labels on interactive elements.",
 
     # --- MCP ---
+    "hermes mcp opens an interactive picker of Nous-approved MCPs you can install in one keystroke.",
+    "hermes mcp catalog lists Nous-approved MCP servers shipped with the repo.",
+    "hermes mcp install <name> installs a catalog entry, prompts for credentials, and lets you pick which of its tools to enable.",
     "MCP servers are configured in config.yaml — both stdio and HTTP transports supported.",
     "Per-server tool filtering: tools.include whitelists and tools.exclude blacklists specific tools.",
     "MCP servers auto-generate toolsets at runtime — meridian tools can toggle them per platform.",
@@ -481,5 +484,4 @@ def get_random_tip(exclude_recent: int = 0) -> str:
             deduplication across sessions.
     """
     return random.choice(TIPS)
-
 

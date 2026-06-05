@@ -1,8 +1,4 @@
-"""Attribution default_headers applied per provider via base-URL detection.
-
-Mirrors the OpenRouter pattern for the Vercel AI Gateway so that
-referrerUrl / appName / User-Agent flow into gateway analytics.
-"""
+"""Attribution default_headers applied per provider via base-URL detection."""
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
