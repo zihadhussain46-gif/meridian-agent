@@ -1,4 +1,4 @@
-"""Helpers for loading Hermes .env files consistently across entrypoints."""
+"""Helpers for loading Meridian .env files consistently across entrypoints."""
 
 from __future__ import annotations
 

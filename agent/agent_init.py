@@ -946,6 +946,20 @@ def init_agent(
             print(f"🔄 Fallback chain ({len(agent._fallback_chain)} providers): " +
                   " → ".join(f"{f['model']} ({f['provider']})" for f in agent._fallback_chain))
 
+    # Wait for background MCP discovery to finish registering tools.
+    # MCP discovery runs in a background daemon thread with a 0.75s brief
+    # join on the CLI path, but agent_init calls get_tool_definitions
+    # through model_tools directly — bypassing the CLI wrapper that waits.
+    # If MCP servers haven't registered yet, their tools are missing from
+    # the agent's tool list for the entire session. Wait up to 10s for the
+    # discovery thread to complete; thread.join returns early if it finishes
+    # sooner. Silent on failure or when no MCP servers are configured.
+    try:
+        from hermes_cli.mcp_startup import wait_for_mcp_discovery
+        wait_for_mcp_discovery(timeout=10)
+    except Exception:
+        pass
+
     # Get available tools with filtering
     agent.tools = _ra().get_tool_definitions(
         enabled_toolsets=enabled_toolsets,

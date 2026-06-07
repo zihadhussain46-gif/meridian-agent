@@ -1,4 +1,4 @@
-"""Shared constants for Hermes Agent.
+"""Shared constants for Meridian Agent.
 
 Import-safe module with no dependencies — can be imported from anywhere
 without risk of circular imports.
@@ -47,13 +47,13 @@ def _get_platform_default_hermes_home() -> Path:
         local_appdata = os.environ.get("LOCALAPPDATA", "").strip()
         base = Path(local_appdata) if local_appdata else Path.home() / "AppData" / "Local"
         return base / "hermes"
-    return Path.home() / ".hermes"
+    return Path.home() / ".meridian"
 
 
 def get_hermes_home() -> Path:
-    """Return the Hermes home directory (default: platform-native path).
+    """Return the Hermes home directory (default: ~/.meridian).
 
-    Reads HERMES_HOME env var, falls back to the platform-native default.
+    Reads HERMES_HOME env var, falls back to ~/.meridian.
     This is the single source of truth — all other copies should import this.
 
     When ``HERMES_HOME`` is unset but an ``active_profile`` file indicates
