@@ -164,7 +164,7 @@ class SkinConfig:
 _BUILTIN_SKINS: Dict[str, Dict[str, Any]] = {
     "default": {
         "name": "default",
-+        "description": "Classic Meridian — magenta and sleek",
+        "description": "Classic Meridian — magenta and sleek",
         "colors": {
             "banner_border": "#B1126F",
             "banner_title": "#FF2DAA",
